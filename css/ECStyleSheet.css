@@ -1,7 +1,9 @@
 :root {
+    --veryslightdark-highlight: rgba(0, 0, 0, 0.05);
     --slightdark-highlight: rgba(0, 0, 0, 0.25);
     --dark-highlight: rgba(0, 0, 0, 0.5);
     --verydark-highlight: rgba(0, 0, 0, 0.75);
+    --veryslightlight-highlight: rgba(255, 255, 255, 0.05);
     --slightlight-highlight: rgba(255, 255, 255, 0.75);
     --light-highlight: rgba(255, 255, 255, 0.5);
     --verylight-highlight: rgba(255, 255, 255, 0.25);
@@ -18,6 +20,14 @@
 .backgroundcolor-violet { background-color: violet; }
 .backgroundcolor-black { background-color: black; }
 .backgroundcolor-white { background-color: white; }
+.backgroundcolor-veryslightdark-highlight { background-color: var(--veryslightdark-highlight); }
+.backgroundcolor-slightdark-highlight { background-color: var(--slightdark-highlight); }
+.backgroundcolor-dark-highlight { background-color: var(--dark-highlight); }
+.backgroundcolor-verydark-highlight { background-color: var(--verydark-highlight); }
+.backgroundcolor-veryslightlight-highlight { background-color: var(--veryslightlight-highlight); }
+.backgroundcolor-slightlight-highlight { background-color: var(--slightlight-highlight); }
+.backgroundcolor-light-highlight { background-color: var(--light-highlight); }
+.backgroundcolor-verylight-highlight { background-color: var(--verylight-highlight); }
 .boxsizing-borderbox { -webkit-box-sizing: border-box; box-sizing: border-box; }
 .textcolor-red { color: red; }
 .textcolor-blue { color: blue; }
