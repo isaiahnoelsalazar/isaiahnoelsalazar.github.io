@@ -25,6 +25,17 @@
         <title>Index</title>
         <script src="js/UncachedCSSAdder.js"></script>
         <script src="js/UncachedScriptAdder.js"></script>
+        <script type="module">
+            import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.mjs";
+            async function main(){
+                try {
+                    const pyodide = await loadPyodide();
+                    document.getElementById("main-content").style.display = "block";
+                } catch (error){
+                }
+            }
+            main();
+        </script>
         <script>
             UncachedCSSAdder.add("css/ECStyleSheet.css");
             UncachedCSSAdder.add("css/index.css");
@@ -33,20 +44,22 @@
         </script>
     </head>
     <body class="margin-0 padding-0">
-        <h1 class="backgroundcolor-208-230-239 margin-0 padding-16" id="main-header">Index</h1>
-        <div class="list-vertical-curved-16">
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8 margintop-8">1</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">2</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">3</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">4</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">5</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">6</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">7</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">8</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">9</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">10</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">11</div>
-            <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-8 marginleft-8 marginright-8">12</div>
+        <div id="main-content" style="display: none;">
+            <h1 class="backgroundcolor-208-230-239 margin-0 padding-16" id="main-header">Index</h1>
+            <div class="list-vertical-curved-16">
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8 margintop-8">1</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">2</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">3</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">4</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">5</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">6</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">7</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">8</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">9</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">10</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-4 marginleft-8 marginright-8">11</div>
+                <div class="padding-16 backgroundcolor-veryslightdark-highlight marginbottom-8 marginleft-8 marginright-8">12</div>
+            </div>
         </div>
     </body>
 </html>
