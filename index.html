@@ -30,6 +30,17 @@
             async function main(){
                 try {
                     const pyodide = await loadPyodide();
+                    await pyodide.loadPackage("micropip");
+                    const micropip = pyodide.pyimport("micropip");
+                    await micropip.install('PythonSimpleFunctions');
+                    await pyodide.loadPackage("sqlite3");
+                    const script = `
+                        from PythonSimpleFunctions import test_method
+                        output = test_method()
+                        output
+                    `;
+                    const output = await pyodide.runPythonAsync(script);
+                    alert(output);
                     document.getElementById("main-content").style.display = "block";
                 } catch (error){
                 }
