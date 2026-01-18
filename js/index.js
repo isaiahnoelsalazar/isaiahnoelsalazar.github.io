@@ -28,9 +28,10 @@ showContent(hash ? hash.substring(1) : "dashboard");
 const navigationLinks = document.getElementsByClassName("navigation-links");
 Array.from(navigationLinks).forEach(link => {
     link.addEventListener("click", (event) => {
-        event.preventDefault();
         const target = event.target.textContent.toLowerCase();
         showContent(target);
-        toggleSidebar();
+        if (document.getElementsByClassName("mobile-header").style.display != "none"){
+            toggleSidebar();
+        }
     });
 });
