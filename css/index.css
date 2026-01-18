@@ -75,6 +75,3 @@ main {
 .main-content {
     display: none;
 }
-.main-content.dashboard {
-    display: block;
-}
