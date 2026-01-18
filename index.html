@@ -23,6 +23,11 @@
         <meta name="robots" content="index, follow">
         <meta name="theme-color" content="#FFFFFF">
         <title>Index</title>
+        <style>
+            body {
+                display: none;
+            }
+        </style>
         <script src="js/UncachedCSSAdder.js"></script>
         <script src="js/UncachedScriptAdder.js"></script>
         <script type="module">
@@ -41,17 +46,19 @@
                     `;
                     const output = await pyodide.runPythonAsync(script);
                     alert(output);
-                    document.getElementById("main-content").style.display = "block";
+                    UA();
                 } catch (error){
                 }
             }
             main();
         </script>
         <script>
-            UncachedCSSAdder.add("css/ECStyleSheet.css");
-            UncachedCSSAdder.add("css/index.css");
-            UncachedScriptAdder.add("js/ECStyleSheet.js");
-            UncachedScriptAdder.add("js/index.js");
+            function UA(){
+                UncachedCSSAdder.add("css/ECStyleSheet.css");
+                UncachedCSSAdder.add("css/index.css");
+                UncachedScriptAdder.add("js/ECStyleSheet.js");
+                UncachedScriptAdder.add("js/index.js");
+            }
         </script>
     </head>
     <body class="margin-0 padding-0">
