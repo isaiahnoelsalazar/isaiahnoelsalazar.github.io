@@ -23,33 +23,8 @@
         <meta name="robots" content="index, follow">
         <meta name="theme-color" content="#FFFFFF">
         <title>Index</title>
-        <style>
-            body {
-                display: none;
-            }
-        </style>
         <script src="js/UncachedCSSAdder.js"></script>
         <script src="js/UncachedScriptAdder.js"></script>
-        <script type="module">
-            import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.mjs";
-            async function main(){
-                try {
-                    const pyodide = await loadPyodide();
-                    await pyodide.loadPackage("sqlite3");
-                    await pyodide.loadPackage("micropip");
-                    const micropip = pyodide.pyimport("micropip");
-                    await micropip.install('PythonSimpleFunctions');
-                    const script = `
-                        from PythonSimpleFunctions import test_method
-                        output = test_method()
-                        output
-                    `;
-                    const output = await pyodide.runPythonAsync(script);
-                } catch (error){
-                }
-            }
-            main();
-        </script>
         <script>
             UncachedCSSAdder.add("css/ECStyleSheet.css");
             UncachedCSSAdder.add("css/index.css");
