@@ -32,6 +32,10 @@ Array.from(navigationLinks).forEach(link => {
         showContent(target);
         if (window.getComputedStyle(document.getElementById("mobile-header")).getPropertyValue("display") != "none"){
             toggleSidebar();
+        } else {
+            if (sidebar.classList.contains("active")) {
+                toggleSidebar();
+            }
         }
     });
 });
