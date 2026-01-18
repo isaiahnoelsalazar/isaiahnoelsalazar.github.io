@@ -1,18 +1,30 @@
-let randomNumber = Math.floor(Math.random() * 9) + 1;
-let mainHeader = document.getElementById("main-header");
-if (randomNumber == 7){
-    mainHeader.textContent = "This is not what you are looking for.";
-}
+const menuToggle = document.getElementById("menu-toggle");
+const sidebar = document.getElementById("sidebar");
 
-const menuToggle = document.getElementById('menu-toggle');
-const sidebar = document.getElementById('sidebar');
-
-menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    
-    if (sidebar.classList.contains('active')) {
+function toggleSidebar(){
+    sidebar.classList.toggle("active");
+    if (sidebar.classList.contains("active")) {
         menuToggle.innerHTML = "✕ Close";
     } else {
         menuToggle.innerHTML = "☰ Menu";
     }
+}
+
+menuToggle.addEventListener("click", toggleSidebar);
+
+const navigationLinks = document.getElementsByClassName("navigation-links");
+Array.from(navigationLinks).forEach(link => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const target = event.target.textContent.toLowerCase();
+        const mainContents = document.getElementsByClassName("main-content");
+        Array.from(mainContents).forEach(content => {
+            content.style.display = "none";
+        });
+        const targetContent = document.querySelector(`.main-content.${target}`);
+        if (targetContent) {
+            targetContent.style.display = "block";
+        }
+        toggleSidebar();
+    });
 });
