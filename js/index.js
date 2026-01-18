@@ -30,7 +30,7 @@ Array.from(navigationLinks).forEach(link => {
     link.addEventListener("click", (event) => {
         const target = event.target.textContent.toLowerCase();
         showContent(target);
-        if (document.getElementsByClassName("mobile-header").style.display != "none"){
+        if (document.getElementsByClassName("mobile-header")[0].style.display != "none"){
             toggleSidebar();
         }
     });
