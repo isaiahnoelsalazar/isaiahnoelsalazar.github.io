@@ -90,7 +90,7 @@
 .list-vertical {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex !important;
+    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -99,7 +99,7 @@
 .list-horizontal {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex !important;
+    display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
