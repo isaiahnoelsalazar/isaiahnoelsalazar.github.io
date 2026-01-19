@@ -21,7 +21,7 @@ function showContent(target){
     });
     const targetContent = document.querySelector(`.main-content.${target}`);
     if (targetContent) {
-        targetContent.style.display = "block";
+        targetContent.style.display = "flex";
     }
 }
 
