@@ -12,6 +12,9 @@ function toggleSidebar(){
 }
 
 function showContent(target){
+    if (target == "dashboard"){
+        window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+    }
     const mainContents = document.getElementsByClassName("main-content");
     Array.from(mainContents).forEach(content => {
         content.style.display = "none";
