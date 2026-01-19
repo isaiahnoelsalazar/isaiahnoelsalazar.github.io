@@ -1,5 +1,6 @@
 const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
+const sidebarLinks = Array.from(document.getElementsByClassName("navigation-links")[0].children);
 const hash = window.location.hash;
 
 function toggleSidebar(){
@@ -42,3 +43,21 @@ Array.from(navigationLinks).forEach(link => {
         }
     });
 });
+
+function searchSidebar(){
+    const tempSidebarLinks = document.getElementById("navigation-links");
+    tempSidebarLinks.innerHTML = "";
+    sidebarLinks.forEach(element => {
+        const text = element.textContent;
+        if (!text.toLowerCase().includes(document.getElementById("search-items").value.toLowerCase()) && text.toLowerCase() != "dashboard"){
+            return;
+        } else {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = "#" + text.toLowerCase();
+            a.textContent = text;
+            li.appendChild(a);
+            tempSidebarLinks.appendChild(li);
+        }
+    });
+}

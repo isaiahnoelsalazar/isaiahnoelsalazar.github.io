@@ -14,6 +14,7 @@ let inventory = JSON.parse(localStorage.getItem('pos_inventory')) || [
 ];
 let cart = [];
 let transactions = JSON.parse(localStorage.getItem('pos_transactions')) || [];
+
 function showView(viewId){
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.querySelectorAll('.nav-links li').forEach(l => l.classList.remove('active'));
@@ -29,6 +30,7 @@ function showView(viewId){
         renderTransactions();
     }
 }
+
 function renderCatalog(filter = ''){
     const grid = document.getElementById('items-grid');
     grid.innerHTML = '';
@@ -40,13 +42,16 @@ function renderCatalog(filter = ''){
         grid.appendChild(div);
     });
 }
+
 function filterCatalog(){
     renderCatalog(document.getElementById('search-items').value);
 }
+
 function addToCart(item){
     cart.push(item);
     renderCart();
 }
+
 function renderCart(){
     const container = document.getElementById('cart-items');
     container.innerHTML = '';
@@ -64,10 +69,12 @@ function renderCart(){
     document.getElementById('tax').innerText = `$${tax.toFixed(2)}`;
     document.getElementById('total-price').innerText = `$${total.toFixed(2)}`;
 }
+
 function clearCart(){
     cart = [];
     renderCart();
 }
+
 function processTransaction(){
     if(cart.length === 0){
         return alert('Cart is empty');
@@ -83,6 +90,7 @@ function processTransaction(){
     alert('Transaction Successful!');
     clearCart();
 }
+
 function renderInventory(){
     const body = document.getElementById('inventory-body');
     body.innerHTML = '';
@@ -91,11 +99,13 @@ function renderInventory(){
         row.innerHTML = `<td>${item.name}</td><td>${item.category}</td><td>$${item.price.toFixed(2)}</td><td><button class="btn-delete" onclick="deleteItem(${item.id})">Delete</button></td>`;
     });
 }
+
 function deleteItem(id){
     inventory = inventory.filter(i => i.id !== id);
     localStorage.setItem('pos_inventory', JSON.stringify(inventory));
     renderInventory();
 }
+
 function renderTransactions(){
     const body = document.getElementById('transactions-body');
     body.innerHTML = '';

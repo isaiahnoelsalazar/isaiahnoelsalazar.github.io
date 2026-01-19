@@ -24,13 +24,20 @@ body {
     list-style: none;
     margin-top: 16px;
 }
+.sidebar > .navigation-links > li {
+    border-bottom: 1px solid var(--secondary-color);
+}
 .sidebar > .navigation-links > li > a {
+    border-radius: 4px;
     color: white;
     cursor: pointer;
     text-decoration: none;
     display: block;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--secondary-color);
+    margin: 4px 0;
+    padding: 12px 6px;
+}
+.sidebar > .navigation-links > li > a:hover {
+    background-color: var(--secondary-color);
 }
 main {
     flex: 1;
@@ -75,4 +82,11 @@ main {
 }
 .main-content {
     display: none;
+}
+#search-items {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
