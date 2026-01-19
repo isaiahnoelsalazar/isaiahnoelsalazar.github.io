@@ -480,6 +480,24 @@ class ECStyleSheet {
         });
     }
 
+    autoListGap(){
+        const potentialMatches = document.querySelectorAll('[class*="list-gap-"]');
+        const listGapRegex = /list-gap-(\d+)/;
+        Array.from(potentialMatches).reduce((item, element) => {
+            const listGapClass = Array.from(element.classList).find(elementClass => listGapRegex.test(elementClass));
+            if (listGapClass) {
+                const match = listGapClass.match(listGapRegex);
+                item.push({
+                    element: element,
+                    size: parseInt(match[1], 10)
+                });
+            }
+            return item;
+        }, []).forEach(item => {
+            item.element.style.gap = `${item.size}px`;
+        });
+    }
+
     autoCurveVerticalListItemCorners(){
         const potentialMatches = document.querySelectorAll('[class*="list-vertical-curved-"]');
         const listVerticalRegex = /list-vertical-curved-(\d+)/;
@@ -591,6 +609,7 @@ init_ECStyleSheet.autoCurveVerticalListItemCorners();
 init_ECStyleSheet.autoCurveHorizontalListItemCorners();
 init_ECStyleSheet.autoFixedCurveVerticalListItemCorners();
 init_ECStyleSheet.autoFixedCurveHorizontalListItemCorners();
+init_ECStyleSheet.autoListGap();
 init_ECStyleSheet.autoBottom();
 init_ECStyleSheet.autoLeft();
 init_ECStyleSheet.autoRight();
