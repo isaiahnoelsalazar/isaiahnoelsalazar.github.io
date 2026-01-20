@@ -1,7 +1,22 @@
 const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
-const sidebarLinks = Array.from(document.getElementsByClassName("navigation-links")[0].children);
+const sidebarLinks = [
+    {title: "Dashboard"},
+    {title: "POS System", href: "/html/point-of-sale.html"},
+    {title: "About", href: "#about"},
+];
 const hash = window.location.hash;
+
+sidebarLinks.forEach(element => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    if (element.href) {
+        a.href = element.href;
+    }
+    a.textContent = element.title;
+    li.appendChild(a);
+    document.getElementById("navigation-links").appendChild(li);
+});
 
 function toggleSidebar(){
     sidebar.classList.toggle("active");
@@ -48,14 +63,15 @@ function searchSidebar(){
     const tempSidebarLinks = document.getElementById("navigation-links");
     tempSidebarLinks.innerHTML = "";
     sidebarLinks.forEach(element => {
-        const text = element.textContent;
-        if (!text.toLowerCase().includes(document.getElementById("searchbar").value.toLowerCase()) && text.toLowerCase() != "dashboard"){
+        if (!element.title.toLowerCase().includes(document.getElementById("searchbar").value.toLowerCase()) && element.title.toLowerCase() != "dashboard"){
             return;
         } else {
             const li = document.createElement("li");
             const a = document.createElement("a");
-            a.href = "#" + text.toLowerCase();
-            a.textContent = text;
+            if (element.href) {
+                a.href = element.href;
+            }
+            a.textContent = element.title;
             li.appendChild(a);
             tempSidebarLinks.appendChild(li);
         }
