@@ -49,7 +49,7 @@ function searchSidebar(){
     tempSidebarLinks.innerHTML = "";
     sidebarLinks.forEach(element => {
         const text = element.textContent;
-        if (!text.toLowerCase().includes(document.getElementById("search-items").value.toLowerCase()) && text.toLowerCase() != "dashboard"){
+        if (!text.toLowerCase().includes(document.getElementById("searchbar").value.toLowerCase()) && text.toLowerCase() != "dashboard"){
             return;
         } else {
             const li = document.createElement("li");

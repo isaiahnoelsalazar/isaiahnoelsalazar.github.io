@@ -83,7 +83,7 @@ main {
 .main-content {
     display: none;
 }
-#search-items {
+#searchbar {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
