@@ -42,7 +42,7 @@ function showContent(target){
 }
 
 menuToggle.addEventListener("click", toggleSidebar);
-showContent(hash ? sidebarLinks.findIndex(link => link.title.toLowerCase().replace(/ /g, "-") == hash.substring(1)) : 0);
+showContent(hash ? sidebarLinks.findIndex(link => link.href && link.href.substring(1) == hash.substring(1)) : 0);
 
 const navigationLinks = document.getElementsByClassName("navigation-links");
 Array.from(navigationLinks).forEach(link => {
