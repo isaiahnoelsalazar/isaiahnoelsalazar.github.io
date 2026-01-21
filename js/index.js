@@ -2,7 +2,7 @@ const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
 const sidebarLinks = [
     {title: "Dashboard"},
-    {title: "POS System", href: "/html/point-of-sale.html"},
+    {title: "POS System", href: "#pos-system"},
     {title: "About", href: "#about"},
 ];
 const hash = window.location.hash;
@@ -28,27 +28,27 @@ function toggleSidebar(){
 }
 
 function showContent(target){
-    if (target == "dashboard"){
+    if (sidebarLinks[target].title.toLowerCase() == "dashboard"){
         window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
     const mainContents = document.getElementsByClassName("main-content");
     Array.from(mainContents).forEach(content => {
         content.style.display = "none";
     });
-    const targetContent = document.querySelector(`.main-content.${target}`);
+    const targetContent = document.querySelector(`.main-content.${sidebarLinks[target].title.toLowerCase().replace(/ /g, "-")}`);
     if (targetContent) {
         targetContent.style.display = "flex";
     }
 }
 
 menuToggle.addEventListener("click", toggleSidebar);
-showContent(hash ? hash.substring(1) : "dashboard");
+showContent(hash ? sidebarLinks.findIndex(link => link.title.toLowerCase().replace(/ /g, "-") == hash.substring(1)) : 0);
 
 const navigationLinks = document.getElementsByClassName("navigation-links");
 Array.from(navigationLinks).forEach(link => {
     link.addEventListener("click", (event) => {
         const target = event.target.textContent.toLowerCase();
-        showContent(target);
+        showContent(sidebarLinks.findIndex(link => link.title.toLowerCase() == target));
         if (window.getComputedStyle(document.getElementById("mobile-header")).getPropertyValue("display") != "none"){
             toggleSidebar();
         } else {

@@ -40,9 +40,10 @@ body {
     background-color: var(--secondary-color);
 }
 main {
-    flex: 1;
-    padding: 32px;
     background: var(--background-color);
+    flex: 1;
+    height: 100vh;
+    padding: 32px;
 }
 .mobile-header {
     display: none;
@@ -82,6 +83,7 @@ main {
 }
 .main-content {
     display: none;
+    height: 100%;
 }
 #searchbar {
     width: 100%;
