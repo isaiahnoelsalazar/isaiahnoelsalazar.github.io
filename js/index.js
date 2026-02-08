@@ -45,19 +45,21 @@ menuToggle.addEventListener("click", toggleSidebar);
 showContent(hash ? sidebarLinks.findIndex(link => link.href && link.href.substring(1) == hash.substring(1)) : 0);
 
 const navigationLinks = document.getElementsByClassName("navigation-links");
-Array.from(navigationLinks).forEach(link => {
-    link.addEventListener("click", (event) => {
-        const target = event.target.textContent.toLowerCase();
-        showContent(sidebarLinks.findIndex(link => link.title.toLowerCase() == target));
-        if (window.getComputedStyle(document.getElementById("mobile-header")).getPropertyValue("display") != "none"){
-            toggleSidebar();
-        } else {
-            if (sidebar.classList.contains("active")) {
+for (let a = 0; a < navigationLinks.length; a++) {
+    navigationLinks[a].addEventListener("click", (event) => {
+        if (event.target.tagName.toLowerCase() == "a") {
+            const target = event.target.textContent.toLowerCase();
+            showContent(sidebarLinks.findIndex(link => link.title.toLowerCase() == target));
+            if (window.getComputedStyle(document.getElementById("mobile-header")).getPropertyValue("display") != "none"){
                 toggleSidebar();
+            } else {
+                if (sidebar.classList.contains("active")) {
+                    toggleSidebar();
+                }
             }
         }
     });
-});
+}
 
 function searchSidebar(){
     const tempSidebarLinks = document.getElementById("navigation-links");
