@@ -16,7 +16,7 @@
         <?php
         $files = array_diff(scandir("file_uploads"), array('.', '..'));
         foreach ($files as $file) {
-            echo "<li><a href='file_uploads/$file' download>$file</a></li>";
+            echo "<li><a href='file_uploads/".$file."' download>".$file."</a></li>";
         }
         ?>
         </ul>
