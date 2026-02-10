@@ -15,8 +15,8 @@
         <ul>
         <?php
         $files = array_diff(scandir("file_uploads"), array('.', '..'));
-        foreach ($files as $file) {
-            echo "<li><a href='file_uploads/".$file."' download>".$file."</a></li>";
+        for ($a = 0; $a < count($files); $a++) {
+            echo "<li><a href='file_uploads/".$files[$a]."' download>".$files[$a]."</a></li>";
         }
         ?>
         </ul>
