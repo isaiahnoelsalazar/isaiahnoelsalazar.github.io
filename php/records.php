@@ -9,6 +9,10 @@ $message = "This message exists because GitHub doesn't recognize PHP without the
     </head>
     <body>
     <section>
+        <form method="post" action="export.php">
+            <input type="hidden" name="table_html" id="table_html">
+            <button type="submit" onclick="exportTable()">Export to Excel</button>
+        </form>
         <div>
             <h2>Attendance Records</h2>
             <table id="record_table">
