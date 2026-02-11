@@ -2,7 +2,9 @@ const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
 const sidebarLinks = [
     {title: "Dashboard"},
+    {title: "OJT Attendance", href: "#ojt-attendance"},
     {title: "POS System", href: "#pos-system"},
+    {title: "Upload", href: "#upload"},
     {title: "About", href: "#about"},
 ];
 const hash = window.location.hash;
