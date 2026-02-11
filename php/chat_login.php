@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($row && password_verify($pass, $row["password"])) {
         $_SESSION["user_id"] = $row["id"];
         $_SESSION["username"] = $row["username"];
-        header("Location: chat.php");
+        header("Location: chat_index.php");
     } else {
         echo "Invalid login!";
     }
