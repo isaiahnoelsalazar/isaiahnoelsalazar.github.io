@@ -2,9 +2,9 @@ const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
 const sidebarLinks = [
     {title: "Dashboard"},
-    {title: "OJT Attendance", href: "#ojt-attendance"},
+    {title: "OJT Attendance", href: "https://openweb.fwh.is/ojt_attendance_index.php"},
     {title: "POS System", href: "#pos-system"},
-    {title: "Upload", href: "#upload"},
+    {title: "Upload", href: "https://openweb.fwh.is/upload_index.php"},
     {title: "About", href: "#about"},
 ];
 const hash = window.location.hash;
