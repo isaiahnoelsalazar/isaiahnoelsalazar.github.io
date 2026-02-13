@@ -25,8 +25,12 @@ class ECStyleSheet {
         });
     }
     processClass(className) {
-        if (this.cache.has(className)) return;
-        if (!className.includes("-")) return;
+        if (this.cache.has(className)){
+            return;
+        }
+        if (!className.includes("-")){
+            return;
+        }
         const parts = className.split(":");
         let media = null;
         let pseudo = null;
@@ -35,15 +39,21 @@ class ECStyleSheet {
             if (this.breakpoints[part]) media = part;
             else pseudo = part;
         });
-        if (!base.includes("-")) return;
+        if (!base.includes("-")){
+            return;
+        }
         const [propertyRaw, ...valueParts] = base.split("-");
         const value = valueParts.join("-");
-        if (!propertyRaw || !value) return;
+        if (!propertyRaw || !value){
+            return;
+        }
         const property = this.toKebabCase(propertyRaw);
-        if (!(property in document.body.style)) return;
+        if (!(property in document.body.style)){
+            return;
+        }
         this.cache.add(className);
         const escapedClass = CSS.escape(className);
-        let rule = `.${escapedClass}${pseudo ? ":" + pseudo : ""} { ${property}: ${value}; }`;
+        let rule = `.${escapedClass}${pseudo ? ":" + pseudo : ""} { ${property}: ${/\[.*\]/.test(value) ? value.replace(/\[|\]/g, '').replace('_', ' ') : value}; }`;
         if (media) {
             rule = this.wrapWithMedia(rule, media);
         }
