@@ -18,6 +18,8 @@ sidebarLinks.forEach(element => {
         a.href = element.href;
     }
     a.textContent = element.title;
+    li.classList.add("borderBottomStyle-solid", "borderBottomColor-[var(--secondary-color)]", "borderBottomWidth-1px");
+    a.classList.add("borderRadius-4px", "color-white", "cursor-pointer", "margin-[4px_0]", "display-block", "padding-[12px_6px]", "textDecoration-none", "hover:backgroundColor-[var(--secondary-color)]");
     li.appendChild(a);
     document.getElementById("navigation-links").appendChild(li);
 });
