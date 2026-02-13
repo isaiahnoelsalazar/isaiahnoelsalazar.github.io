@@ -3,6 +3,7 @@ const sidebar = document.getElementById("sidebar");
 const sidebarLinks = [
     {title: "Dashboard"},
     {title: "Chat", href: "https://openweb.fwh.is/chmsg.php"},
+    {title: "ECStyleSheet Demo", href: "#ecstylesheet-demo"},
     {title: "OJT Attendance", href: "https://openweb.fwh.is/ojt_attendance_index.php"},
     {title: "POS System", href: "#pos-system"},
     {title: "Upload", href: "https://openweb.fwh.is/upload_index.php"},
