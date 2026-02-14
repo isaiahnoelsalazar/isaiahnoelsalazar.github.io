@@ -10,9 +10,11 @@ class ECStyleSheet {
             /eclisth/,
             /eclisthc-(\d+)/,
             /eclisthf-(\d+)/,
+            /eclistho-(\d+)/,
             /eclistv/,
             /eclistvc-(\d+)/,
             /eclistvf-(\d+)/,
+            /eclistvo-(\d+)/,
         ];
         this.cache = new Set();
         this.styleTag = this.createStyleTag();
@@ -89,48 +91,36 @@ class ECStyleSheet {
             return rules;
         }
         // HORIZONTAL LIST
-        if (match[0] === "eclisth"){
+        if (match[0].includes("eclisth")) {
+            const size = match[1] ? `${match[1]}px` : '0px';
+            const half = match[1] ? `${Math.round(match[1]/2)}px` : '0px';
             rules.push(`${selector} { display:flex; flex-direction:row; }`);
-            return rules;
+            if (type.includes('c')) {
+                rules.push(`${selector} > * { border-radius:${half}; }`);
+                rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-bottom-left-radius:${size}; }`);
+                rules.push(`${selector} > *:last-child { border-top-right-radius:${size}; border-bottom-right-radius:${size}; }`);
+            } else if (type.includes('o')) {
+                rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-bottom-left-radius:${size}; }`);
+                rules.push(`${selector} > *:last-child { border-top-right-radius:${size}; border-bottom-right-radius:${size}; }`);
+            } else if (type.includes('f')) {
+                rules.push(`${selector} > * { border-radius:${size}; }`);
+            }
         }
         // VERTICAL LIST
-        if (match[0] === "eclistv"){
+        if (match[0].includes("eclistv")) {
+            const size = match[1] ? `${match[1]}px` : '0px';
+            const half = match[1] ? `${Math.round(match[1]/2)}px` : '0px';
             rules.push(`${selector} { display:flex; flex-direction:column; }`);
-            return rules;
-        }
-        // HORIZONTAL CURVED
-        if (match[0].startsWith("eclisthc-")){
-            const size = parseInt(match[1], 10);
-            const half = Math.round(size / 2);
-            rules.push(`${selector} { display:flex; flex-direction:row; }`);
-            rules.push(`${selector} > * { border-radius:${half}px; }`);
-            rules.push(`${selector} > *:first-child { border-top-left-radius:${size}px; border-bottom-left-radius:${size}px; }`);
-            rules.push(`${selector} > *:last-child { border-top-right-radius:${size}px; border-bottom-right-radius:${size}px; }`);
-            return rules;
-        }
-        // VERTICAL CURVED
-        if (match[0].startsWith("eclistvc-")){
-            const size = parseInt(match[1], 10);
-            const half = Math.round(size / 2);
-            rules.push(`${selector} { display:flex; flex-direction:column; }`);
-            rules.push(`${selector} > * { border-radius:${half}px; }`);
-            rules.push(`${selector} > *:first-child { border-top-left-radius:${size}px; border-top-right-radius:${size}px; }`);
-            rules.push(`${selector} > *:last-child { border-bottom-left-radius:${size}px; border-bottom-right-radius:${size}px; }`);
-            return rules;
-        }
-        // HORIZONTAL FIXED
-        if (match[0].startsWith("eclisthf-")){
-            const size = parseInt(match[1], 10);
-            rules.push(`${selector} { display:flex; flex-direction:row; }`);
-            rules.push(`${selector} > * { border-radius:${size}px; }`);
-            return rules;
-        }
-        // VERTICAL FIXED
-        if (match[0].startsWith("eclistvf-")){
-            const size = parseInt(match[1], 10);
-            rules.push(`${selector} { display:flex; flex-direction:column; }`);
-            rules.push(`${selector} > * { border-radius:${size}px; }`);
-            return rules;
+            if (type.includes('c')) {
+                rules.push(`${selector} > * { border-radius:${half}; }`);
+                rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-bottom-left-radius:${size}; }`);
+                rules.push(`${selector} > *:last-child { border-top-right-radius:${size}; border-bottom-right-radius:${size}; }`);
+            } else if (type.includes('o')) {
+                rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-bottom-left-radius:${size}; }`);
+                rules.push(`${selector} > *:last-child { border-top-right-radius:${size}; border-bottom-right-radius:${size}; }`);
+            } else if (type.includes('f')) {
+                rules.push(`${selector} > * { border-radius:${size}; }`);
+            }
         }
         return rules;
     }
