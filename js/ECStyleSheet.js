@@ -7,14 +7,14 @@ class ECStyleSheet {
         };
         this.ecClasses = [
             /ecgrid-(\d+)x(\d+)/,
-            /eclisth/,
             /eclisthc-(\d+)/,
             /eclisthf-(\d+)/,
             /eclistho-(\d+)/,
-            /eclistv/,
+            /eclisth/,
             /eclistvc-(\d+)/,
             /eclistvf-(\d+)/,
             /eclistvo-(\d+)/,
+            /eclistv/,
         ];
         this.cache = new Set();
         this.styleTag = this.createStyleTag();
@@ -75,7 +75,7 @@ class ECStyleSheet {
             }
             this.cache.add(className);
             const escapedClass = CSS.escape(className);
-            let rule = `.${escapedClass}${pseudo ? ":" + pseudo : ""} { ${property}: ${/\[.*\]/.test(value) ? value.replace(/\[|\]/g, '').replace('_', ' ') : value}; }`;
+            let rule = `.${escapedClass}${pseudo ? ":" + pseudo : ""} { ${property}: ${/\[.*\]/.test(value) ? value.replace(/\[|\]/g, '').replaceAll('_', ' ') : value}; }`;
             if (media) {
                 rule = this.wrapWithMedia(rule, media);
             }
@@ -95,6 +95,7 @@ class ECStyleSheet {
             const size = match[1] ? `${match[1]}px` : '0px';
             const half = match[1] ? `${Math.round(match[1]/2)}px` : '0px';
             rules.push(`${selector} { display:flex; flex-direction:row; }`);
+            let type = match[0].replace("eclisth", "");
             if (type.includes('c')) {
                 rules.push(`${selector} > * { border-radius:${half}; }`);
                 rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-bottom-left-radius:${size}; }`);
@@ -111,13 +112,14 @@ class ECStyleSheet {
             const size = match[1] ? `${match[1]}px` : '0px';
             const half = match[1] ? `${Math.round(match[1]/2)}px` : '0px';
             rules.push(`${selector} { display:flex; flex-direction:column; }`);
+            let type = match[0].replace("eclistv", "");
             if (type.includes('c')) {
                 rules.push(`${selector} > * { border-radius:${half}; }`);
-                rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-bottom-left-radius:${size}; }`);
-                rules.push(`${selector} > *:last-child { border-top-right-radius:${size}; border-bottom-right-radius:${size}; }`);
+                rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-top-right-radius:${size}; }`);
+                rules.push(`${selector} > *:last-child { border-bottom-left-radius:${size}; border-bottom-right-radius:${size}; }`);
             } else if (type.includes('o')) {
-                rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-bottom-left-radius:${size}; }`);
-                rules.push(`${selector} > *:last-child { border-top-right-radius:${size}; border-bottom-right-radius:${size}; }`);
+                rules.push(`${selector} > *:first-child { border-top-left-radius:${size}; border-top-right-radius:${size}; }`);
+                rules.push(`${selector} > *:last-child { border-bottom-left-radius:${size}; border-bottom-right-radius:${size}; }`);
             } else if (type.includes('f')) {
                 rules.push(`${selector} > * { border-radius:${size}; }`);
             }
