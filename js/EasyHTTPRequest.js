@@ -1,12 +1,26 @@
 class EasyHTTPRequest {
-    constructor (url, method){
+    constructor(url, method = 'GET') {
         this.url = url;
-        this.method = method;
-        this.request = new XMLHttpRequest();
+        this.method = method.toUpperCase();
     }
-    execute (userFunction){
-        this.request.open(this.method, this.url, true);
-        this.request.onreadystatechange = userFunction;
-        this.request.send();
+    async execute(data = null) {
+        const options = {
+            method: this.method,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        if (data && this.method !== 'GET') {
+            options.body = JSON.stringify(data);
+        }
+        try {
+            const response = await fetch(this.url, options);
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            return { error: error.message };
+        }
     }
 }
