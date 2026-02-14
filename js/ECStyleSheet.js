@@ -5,6 +5,15 @@ class ECStyleSheet {
             tablet: { type: "range", min: "768px", max: "1023px" },
             pc: { type: "min", width: "1024px" }
         };
+        this.ecClasses = [
+            /ecgrid-(\d+)x(\d+)/,
+            /eclisth/,
+            /eclisthc-(\d+)/,
+            /eclisthf-(\d+)/,
+            /eclistv/,
+            /eclistvc-(\d+)/,
+            /eclistvf-(\d+)/,
+        ];
         this.cache = new Set();
         this.styleTag = this.createStyleTag();
         this.scan();
@@ -39,25 +48,91 @@ class ECStyleSheet {
             if (this.breakpoints[part]) media = part;
             else pseudo = part;
         });
-        if (!base.includes("-")){
-            return;
+        const ecMatch = this.ecClasses.map(regex => className.match(regex)).find(match => match);
+        if (ecMatch){
+            this.cache.add(className);
+            const escaped = CSS.escape(className);
+            const selector = `.${escaped}${pseudo ? ":" + pseudo : ""}`;
+            const rules = this.generateECGroupStyles(selector, ecMatch);
+            rules.forEach(rule => {
+                const finalRule = media ? this.wrapWithMedia(rule, media) : rule;
+                this.styleTag.sheet.insertRule(finalRule, this.styleTag.sheet.cssRules.length);
+            });
+        } else {
+            if (!base.includes("-")){
+                return;
+            }
+            const [propertyRaw, ...valueParts] = base.split("-");
+            const value = valueParts.join("-");
+            if (!propertyRaw || !value){
+                return;
+            }
+            const property = this.toKebabCase(propertyRaw);
+            if (!(property in document.body.style)){
+                return;
+            }
+            this.cache.add(className);
+            const escapedClass = CSS.escape(className);
+            let rule = `.${escapedClass}${pseudo ? ":" + pseudo : ""} { ${property}: ${/\[.*\]/.test(value) ? value.replace(/\[|\]/g, '').replace('_', ' ') : value}; }`;
+            if (media) {
+                rule = this.wrapWithMedia(rule, media);
+            }
+            this.styleTag.sheet.insertRule(rule, this.styleTag.sheet.cssRules.length);
         }
-        const [propertyRaw, ...valueParts] = base.split("-");
-        const value = valueParts.join("-");
-        if (!propertyRaw || !value){
-            return;
+    }
+    generateECGroupStyles(selector, match){
+        const rules = [];
+        // GRID
+        if (match[0].startsWith("ecgrid-")){
+            const [_, cols, rows] = match;
+            rules.push(`${selector} { display:grid; grid-template-columns:repeat(${cols},1fr); grid-template-rows:repeat(${rows},1fr); }`);
+            return rules;
         }
-        const property = this.toKebabCase(propertyRaw);
-        if (!(property in document.body.style)){
-            return;
+        // HORIZONTAL LIST
+        if (match[0] === "eclisth"){
+            rules.push(`${selector} { display:flex; flex-direction:row; }`);
+            return rules;
         }
-        this.cache.add(className);
-        const escapedClass = CSS.escape(className);
-        let rule = `.${escapedClass}${pseudo ? ":" + pseudo : ""} { ${property}: ${/\[.*\]/.test(value) ? value.replace(/\[|\]/g, '').replace('_', ' ') : value}; }`;
-        if (media) {
-            rule = this.wrapWithMedia(rule, media);
+        // VERTICAL LIST
+        if (match[0] === "eclistv"){
+            rules.push(`${selector} { display:flex; flex-direction:column; }`);
+            return rules;
         }
-        this.styleTag.sheet.insertRule(rule, this.styleTag.sheet.cssRules.length);
+        // HORIZONTAL CURVED
+        if (match[0].startsWith("eclisthc-")){
+            const size = parseInt(match[1], 10);
+            const half = Math.round(size / 2);
+            rules.push(`${selector} { display:flex; flex-direction:row; }`);
+            rules.push(`${selector} > * { border-radius:${half}px; }`);
+            rules.push(`${selector} > *:first-child { border-top-left-radius:${size}px; border-bottom-left-radius:${size}px; }`);
+            rules.push(`${selector} > *:last-child { border-top-right-radius:${size}px; border-bottom-right-radius:${size}px; }`);
+            return rules;
+        }
+        // VERTICAL CURVED
+        if (match[0].startsWith("eclistvc-")){
+            const size = parseInt(match[1], 10);
+            const half = Math.round(size / 2);
+            rules.push(`${selector} { display:flex; flex-direction:column; }`);
+            rules.push(`${selector} > * { border-radius:${half}px; }`);
+            rules.push(`${selector} > *:first-child { border-top-left-radius:${size}px; border-top-right-radius:${size}px; }`);
+            rules.push(`${selector} > *:last-child { border-bottom-left-radius:${size}px; border-bottom-right-radius:${size}px; }`);
+            return rules;
+        }
+        // HORIZONTAL FIXED
+        if (match[0].startsWith("eclisthf-")){
+            const size = parseInt(match[1], 10);
+            rules.push(`${selector} { display:flex; flex-direction:row; }`);
+            rules.push(`${selector} > * { border-radius:${size}px; }`);
+            return rules;
+        }
+        // VERTICAL FIXED
+        if (match[0].startsWith("eclistvf-")){
+            const size = parseInt(match[1], 10);
+            rules.push(`${selector} { display:flex; flex-direction:column; }`);
+            rules.push(`${selector} > * { border-radius:${size}px; }`);
+            return rules;
+        }
+        return rules;
     }
     wrapWithMedia(rule, key) {
         const bp = this.breakpoints[key];
