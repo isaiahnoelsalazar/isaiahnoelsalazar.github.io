@@ -49,12 +49,12 @@
             <div class="logo">Index</div>
         </div>
         <div class="display-flex flex-1 mobile:position-relative">
-            <nav id="sidebar" class="backgroundColor-[var(--primary-color)] color-white padding-16px transition-[all_0.3s_ease] width-[var(--sidebar-width)] mobile:position-absolute mobile:left-[calc(-1_*_var(--sidebar-width))] mobile:height-100% mobile:zIndex-[100]">
+            <nav id="sidebar" class="backgroundColor-[var(--primary-color)] display-flex flexDirection-column height-100vh color-white padding-16px transition-[all_0.3s_ease] width-[var(--sidebar-width)] mobile:position-absolute mobile:left-[calc(-1_*_var(--sidebar-width))] mobile:height-100% mobile:zIndex-[100]">
                 <div class="sidebar-header">
                     <h3>Index</h3>
                     <input type="text" class="border-[1px_solid_#ddd] borderRadius-4px marginTop-10px padding-10px width-100%" id="searchbar" placeholder="Search..." onkeyup="searchSidebar()">
                 </div>
-                <ul id="navigation-links" class="navigation-links listStyle-none marginTop-16px"></ul>
+                <ul id="navigation-links" class="navigation-links overflowY-auto listStyle-none marginTop-16px"></ul>
             </nav>
             <main class="background-[var(--background-color)] flex-1 height-100vh mobile:width-100%">
                 <div class="main-content dashboard padding-32px">

@@ -13,3 +13,10 @@
     display: none;
     height: 100%;
 }
+#navigation-links::-webkit-scrollbar {
+    display: none;
+}
+#navigation-links {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
