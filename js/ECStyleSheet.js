@@ -94,7 +94,7 @@ class ECStyleSheet {
         if (match[0].includes("eclisth")) {
             const size = match[1] ? `${match[1]}px` : '0px';
             const half = match[1] ? `${Math.round(match[1]/2)}px` : '0px';
-            rules.push(`${selector} { display:flex; flex-direction:row; }`);
+            rules.push("eclisth { display:flex; flex-direction:row; }");
             let type = match[0].replace("eclisth", "");
             if (type.includes('c')) {
                 rules.push(`${selector} > * { border-radius:${half}; }`);
@@ -111,7 +111,7 @@ class ECStyleSheet {
         if (match[0].includes("eclistv")) {
             const size = match[1] ? `${match[1]}px` : '0px';
             const half = match[1] ? `${Math.round(match[1]/2)}px` : '0px';
-            rules.push(`${selector} { display:flex; flex-direction:column; }`);
+            rules.push("eclistv { display:flex; flex-direction:column; }");
             let type = match[0].replace("eclistv", "");
             if (type.includes('c')) {
                 rules.push(`${selector} > * { border-radius:${half}; }`);
