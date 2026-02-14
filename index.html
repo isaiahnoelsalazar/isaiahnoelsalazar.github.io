@@ -43,13 +43,13 @@
         <link rel="stylesheet" href="css/index.css">
         <script src="js/ECStyleSheet.js"></script>
     </head>
-    <body class="display-flex flexDirection-column minHeight-100vh">
+    <body class="eclistv minHeight-100vh">
         <div id="mobile-header" class="display-none mobile:display-flex background-[var(--background-color)] color-white padding-16px alignItems-center justifyContent-[space-between]">
             <button id="menu-toggle" class="background-[var(--secondary-color)] color-white border-none padding-[8px_12px] cursor-pointer borderRadius-4px">☰ Menu</button>
             <div class="logo">Index</div>
         </div>
         <div class="display-flex flex-1 mobile:position-relative">
-            <nav id="sidebar" class="backgroundColor-[var(--primary-color)] display-flex flexDirection-column height-100vh color-white padding-16px transition-[all_0.3s_ease] width-[var(--sidebar-width)] mobile:position-absolute mobile:left-[calc(-1_*_var(--sidebar-width))] mobile:height-100% mobile:zIndex-[100]">
+            <nav id="sidebar" class="eclistv backgroundColor-[var(--primary-color)] height-100vh color-white padding-16px transition-[all_0.3s_ease] width-[var(--sidebar-width)] mobile:position-absolute mobile:left-[calc(-1_*_var(--sidebar-width))] mobile:height-100% mobile:zIndex-[100]">
                 <div class="sidebar-header">
                     <h3>Index</h3>
                     <input type="text" class="border-[1px_solid_#ddd] borderRadius-4px marginTop-10px padding-10px width-100%" id="searchbar" placeholder="Search..." onkeyup="searchSidebar()">

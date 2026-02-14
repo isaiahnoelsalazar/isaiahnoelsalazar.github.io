@@ -39,7 +39,7 @@ class ECStyleSheet {
         if (this.cache.has(className)){
             return;
         }
-        if (!className.includes("-")){
+        if (!className.includes("-") && !this.ecClasses.some(regex => regex.test(className))){
             return;
         }
         const parts = className.split(":");
@@ -75,7 +75,7 @@ class ECStyleSheet {
             }
             this.cache.add(className);
             const escapedClass = CSS.escape(className);
-            let rule = `.${escapedClass}${pseudo ? ":" + pseudo : ""} { ${property}: ${/\[.*\]/.test(value) ? value.replace(/\[|\]/g, '').replaceAll('_', ' ') : value}; }`;
+            let rule = `.${escapedClass}${pseudo ? ":" + pseudo : ""} { ${property}: ${/\[.*\]/.test(value) ? value.replaceAll(/\[|\]/g, '').replaceAll('_', ' ') : value}; }`;
             if (media) {
                 rule = this.wrapWithMedia(rule, media);
             }
