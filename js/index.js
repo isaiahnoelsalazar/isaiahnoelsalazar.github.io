@@ -2,13 +2,9 @@ const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
 const sidebarLinks = [
     {title: "Dashboard"},
-    {title: "Chat", href: "https://openweb.fwh.is/chmsg.php"},
     {title: "ECStyleSheet Demo", href: "#ecstylesheet-demo"},
-    {title: "Email", href: "https://openweb.fwh.is/email_code/sender.php"},
-    {title: "My Website", href: "https://isaiahnoelsalazar.github.io/my-website/"},
-    {title: "OJT Attendance", href: "https://openweb.fwh.is/ojt_attendance_index.php"},
+    {title: "Links", href: "#links"},
     {title: "POS System", href: "#pos-system"},
-    {title: "Upload", href: "https://openweb.fwh.is/upload_index.php"},
     {title: "About", href: "#about"},
 ];
 const hash = window.location.hash;
