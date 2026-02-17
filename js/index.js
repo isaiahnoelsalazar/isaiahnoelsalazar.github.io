@@ -2,6 +2,7 @@ const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
 const sidebarLinks = [
     {title: "Dashboard"},
+    {title: "ECStyleSheet", href: "#ecstylesheet"},
     {title: "ECStyleSheet Demo", href: "#ecstylesheet-demo"},
     {title: "Links", href: "#links"},
     {title: "POS System", href: "#pos-system"},
