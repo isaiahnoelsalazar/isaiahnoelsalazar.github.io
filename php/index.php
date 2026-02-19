@@ -2,7 +2,7 @@
 $message = "This is the homepage. This message exists because GitHub doesn't recognize PHP without the tag. It defaults to Hack, which is similar to PHP.";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="height-100% backgroundColor-[var(--primary-color)]">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=7">
@@ -26,37 +26,21 @@ $message = "This is the homepage. This message exists because GitHub doesn't rec
         <link rel="manifest" href="https://isaiahnoelsalazar.github.io/my-website_old/resources/icon/manifest.json">
         <meta name="msapplication-TileColor" content="#1F1F1F">
         <meta name="msapplication-TileImage" content="https://isaiahnoelsalazar.github.io/my-website_old/resources/icon/ms-icon-144x144.png">
-        <title>Live PHP Pages</title>
-        <!--this works only in Chrome i think -->
-        <script type="speculationrules">
-            {
-                "prefetch": [
-                    {
-                        "urls": [
-                            "http://openweb.fwh.is/sample1.php",
-                            "http://openweb.fwh.is/sample2.php",
-                            "http://openweb.fwh.is/e-commerce.php"
-                        ]
-                    }
-                ]
-            }
-        </script>
+        <title>Index</title>
         <link rel="stylesheet" href="https://isaiahnoelsalazar.github.io/my-website_old/css/colors.css">
         <link rel="stylesheet" href="https://isaiahnoelsalazar.github.io/my-website_old/css/fonts.css">
-        <link rel="stylesheet" href="css/sample_php_pages.css">
+        <script src="https://isaiahnoelsalazar.github.io/js/ECStyleSheet.js"></script>
     </head>
-    <body>
-        <div id="navbar">
-            <p class="tab">Live PHP Pages</p>
+    <body class="backgroundColor-[var(--primary-color)] height-100% margin-0">
+        <div class="backgroundColor-[var(--black)] display-grid gridTemplateColumns-1fr justifyContent-center">
+            <p class="alignItems-center backgroundColor-[var(--black)] borderRadius-16px color-white display-flex height-56px justifyContent-center margin-0">Live PHP Pages</p>
         </div>
-        <div id="main">
-            <div class="pages content">
-                <div id="pages-div-1">
-                    <div id="page-list">
-                        <a href="http://openweb.fwh.is/e-commerce.php">E-Commerce</a>
-                        <a href="http://openweb.fwh.is/sample1.php">Sample PHP Page 1</a>
-                        <a href="http://openweb.fwh.is/sample2.php">Sample PHP Page 2</a>
-                    </div>
+        <div class="eclistv height-[calc(100%-56px)]">
+            <div class="eclistv alignItems-center padding-[16px_0] backgroundColor-[var(--primary-color)] height-100%">
+                <div id="page-list" class="eclistv alignItems-center width-100% cursor-pointer">
+                    <a class="color-[var(--black)] fontSize-larger padding-8px textAlign-center textDecoration-none width-100% hover:textDecoration-underline" href="http://openweb.fwh.is/e-commerce.php">E-Commerce</a>
+                    <a class="color-[var(--black)] fontSize-larger padding-8px textAlign-center textDecoration-none width-100% hover:textDecoration-underline" href="http://openweb.fwh.is/sample1.php">Sample PHP Page 1</a>
+                    <a class="color-[var(--black)] fontSize-larger padding-8px textAlign-center textDecoration-none width-100% hover:textDecoration-underline" href="http://openweb.fwh.is/sample2.php">Sample PHP Page 2</a>
                 </div>
             </div>
         </div>
