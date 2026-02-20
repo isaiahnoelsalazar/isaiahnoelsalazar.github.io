@@ -25,8 +25,8 @@ $message = "This message exists because GitHub doesn't recognize PHP without the
                 <div class="flex flex-col w-full gap-[16px]">
                     <input type="hidden" name="photo" id="photo">
                     <div class="flex flex-col gap-[8px]">
-                        <label class="font-bold">Student ID:</label>
-                        <input type="number" maxlength="12" placeholder="Enter student ID" id="student_id" name="student_id" class="bg-white outline-2 outline-blue-700 rounded-[8px] p-[8px]" required>
+                        <label class="font-bold">ID:</label>
+                        <input type="number" maxlength="12" placeholder="Enter ID" id="id" name="id" class="bg-white outline-2 outline-blue-700 rounded-[8px] p-[8px]" required>
                     </div>
                     <div class="flex flex-col gap-[8px]">
                         <button onclick="fetchServerMessage('time_in')" name="action" value="time_in" class="bg-green-600 group relative inline-flex items-center justify-center overflow-hidden rounded-[8px] px-8 py-3 transition">

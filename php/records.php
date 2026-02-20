@@ -18,7 +18,7 @@ $message = "This message exists because GitHub doesn't recognize PHP without the
             <table id="record_table">
                 <thead>
                     <tr>
-                        <th>Student ID</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Date</th>
                         <th>Time In</th>
