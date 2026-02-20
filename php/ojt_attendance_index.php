@@ -8,7 +8,7 @@ $message = "This message exists because GitHub doesn't recognize PHP without the
         <meta http-equiv="X-UA-Compatible" content="IE=7">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>OJT Time In / Time Out</title>
+        <title>Time In / Time Out</title>
         <link rel="stylesheet" href="css/index.css?<?php echo time();?>">
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <link rel="stylesheet" href="css/sweetalert2.min.css">
@@ -16,7 +16,7 @@ $message = "This message exists because GitHub doesn't recognize PHP without the
     </head>
     <body class="h-full flex items-center justify-center bg-gray-300">
         <div class="flex flex-col bg-white items-center rounded-[16px]">
-            <h2 class="text-[36px] flex items-center justify-center text-white bg-blue-500 font-bold m-0 w-full p-[8px] rounded-t-[16px]">OJT Attendance</h2><br>
+            <h2 class="text-[36px] flex items-center justify-center text-white bg-blue-500 font-bold m-0 w-full p-[8px] rounded-t-[16px]">Attendance</h2><br>
             <div class="px-[24px] pb-[24px]">
                 <video id="video" width="320" height="240" autoplay class="hidden"></video>
                 <button type="button" onclick="capture()" class="hidden">Capture Photo</button>
