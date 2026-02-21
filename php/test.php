@@ -1,6 +1,4 @@
 <?php
-namespace Test;
-
 class Test
 {
     public function __construct()
@@ -8,4 +6,3 @@ class Test
         echo "Test class instantiated!";
     }
 }
-?>
