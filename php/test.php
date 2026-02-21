@@ -8,3 +8,4 @@ class Test
         echo "Test class instantiated!";
     }
 }
+?>
