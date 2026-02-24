@@ -7,6 +7,7 @@ class ECStyleSheet {
         };
         this.ecClasses = [
             /ecgrid-(\d+)x(\d+)/,
+            /ecbounceanimation-(\d+)/,
             /eclisthc-(\d+)/,
             /eclisthf-(\d+)/,
             /eclistho-(\d+)/,
@@ -14,7 +15,7 @@ class ECStyleSheet {
             /eclistvc-(\d+)/,
             /eclistvf-(\d+)/,
             /eclistvo-(\d+)/,
-            /eclistv/,
+            /eclistv/
         ];
         this.cache = new Set();
         this.styleTag = this.createStyleTag();
@@ -88,6 +89,14 @@ class ECStyleSheet {
         if (match[0].startsWith("ecgrid-")){
             const [_, cols, rows] = match;
             rules.push(`${selector} { display:grid; grid-template-columns:repeat(${cols},1fr); grid-template-rows:repeat(${rows},1fr); }`);
+            return rules;
+        }
+        // BOUNCE ANIMATION
+        if (match[0].startsWith("ecbounceanimation-")){
+            const [_, amount] = match;
+            rules.push(`${selector} { transition: 0.2s; }`);
+            rules.push(`${selector}:hover { transform: scale(${1 + (Number(amount) / 100)}); }`);
+            rules.push(`${selector}:active { transform: scale(${1 - (Number(amount) / 100)}); }`);
             return rules;
         }
         // HORIZONTAL LIST
