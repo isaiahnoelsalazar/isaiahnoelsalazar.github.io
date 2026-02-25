@@ -1,5 +1,5 @@
 class ECModal {
-    constructor({title="Modal", content="Content", buttonAmount=1} = {}) {
+    constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[]} = {}) {
         this.modal = document.createElement("div");
         this.modal.classList.add("ecmodal", "position-absolute", "height-100%", "width-100%", "display-flex", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
         this.modal.innerHTML = `
@@ -15,11 +15,17 @@ class ECModal {
             </div>
         </div>`;
         for (let a = 0; a < buttonAmount; a++) {
-            this.modal.querySelector(".ecmodal-footer").insertAdjacentHTML("beforeend", `<a class="ecmodal-button ecbounceanimation-5 padding-[12px_16px] backgroundColor-#1f1f1f hover:backgroundColor-#3f3f3f color-white cursor-pointer" style="user-select: none; -webkit-user-select: none; -ms-user-select: none;">Button ${a+1}</a>`);
+            this.modal.querySelector(".ecmodal-footer").insertAdjacentHTML("beforeend", `<a class="ecmodal-button${a+1} ecbounceanimation-5 padding-[12px_16px] backgroundColor-#1f1f1f hover:backgroundColor-#3f3f3f color-white cursor-pointer" style="user-select: none; -webkit-user-select: none; -ms-user-select: none;">${buttonLabels[a] || `Button ${a+1}`}</a>`);
         }
         document.body.appendChild(this.modal);
         this.closeButton = this.modal.querySelector('.close-button');
         this.closeButton.addEventListener('click', () => this.hide());
+    }
+    setButtonAction(buttonIndex, callback) {
+        const button = this.modal.querySelector(`.ecmodal-button${buttonIndex}`);
+        if (button) {
+            button.addEventListener('click', callback);
+        }
     }
     show() {
         this.modal.style.display = 'flex';
