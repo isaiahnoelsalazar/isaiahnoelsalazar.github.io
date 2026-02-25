@@ -21,6 +21,14 @@ class ECModal {
         this.closeButton = this.modal.querySelector('.close-button');
         this.closeButton.addEventListener('click', () => this.hide());
     }
+    setTitle(newTitle) {
+        const header = this.modal.querySelector('.ecmodal-header h3');
+        header.textContent = newTitle;
+    }
+    setContent(newContent) {
+        const body = this.modal.querySelector('.ecmodal-body');
+        body.innerHTML = `<p class="margin-0">${newContent}</p>`;
+    }
     setButtonAction(buttonIndex, callback) {
         const button = this.modal.querySelector(`.ecmodal-button${buttonIndex}`);
         if (button) {
