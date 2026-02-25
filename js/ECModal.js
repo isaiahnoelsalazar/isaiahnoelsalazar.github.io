@@ -1,7 +1,7 @@
 class ECModal {
     constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="black", darkMode=false} = {}) {
         this.modal = document.createElement("div");
-        this.modal.classList.add("ecmodal", "position-absolute", "height-100%", "width-100%", "display-flex", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
+        this.modal.classList.add("ecmodal", "transition-0.2s", "position-absolute", "height-100%", "width-100%", "display-flex", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
         this.modal.innerHTML = `
         <div class="ecmodal-content ${darkMode ? "backgroundColor-#0f0f0f color-white" : `backgroundColor-[${backgroundColor}] color-[${color}]`} minWidth-300px padding-16px borderRadius-${modalCurveAmount}px position-relative eclistv">
             <div class="ecmodal-header eclisth alignItems-center justifyContent-[space-between] width-100% borderBottom-[solid_${darkMode ? "#1f1f1f" : "#eee"}_1px] paddingBottom-8px marginBottom-8px">
