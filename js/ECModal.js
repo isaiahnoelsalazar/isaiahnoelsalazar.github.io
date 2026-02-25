@@ -49,8 +49,10 @@ class ECModal {
     }
     show() {
         this.modal.style.display = 'flex';
+        this.modal.querySelector('.ecmodal-content').classList.remove('animation-[ecmodal-fade_0.2s_ease_forwards]');
     }
     hide() {
         this.modal.style.display = 'none';
+        this.modal.querySelector('.ecmodal-content').classList.add('animation-[ecmodal-fade_0.2s_ease_forwards]');
     }
 }
