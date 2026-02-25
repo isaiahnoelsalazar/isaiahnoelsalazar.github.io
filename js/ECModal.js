@@ -11,7 +11,7 @@ class ECModal {
             <div class="ecmodal-body eclisth margin-[8px_0]">
                 <p class="margin-0">${content}</p>
             </div>
-            <div class="ecmodal-footer eclisthf-8 marginTop-8px justifyContent-end">
+            <div class="ecmodal-footer eclisthf-8 marginTop-8px justifyContent-end gap-4px">
             </div>
         </div>`;
         for (let a = 0; a < buttonAmount; a++) {
