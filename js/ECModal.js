@@ -1,10 +1,10 @@
 class ECModal {
-    constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=0, modalButtonsCurveAmount=0, backgroundColor="white", color="black", darkMode=false} = {}) {
+    constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="black", darkMode=false} = {}) {
         this.modal = document.createElement("div");
         this.modal.classList.add("ecmodal", "position-absolute", "height-100%", "width-100%", "display-flex", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
         this.modal.innerHTML = `
         <div class="ecmodal-content ${darkMode ? "backgroundColor-#0f0f0f color-white" : `backgroundColor-[${backgroundColor}] color-[${color}]`} minWidth-300px padding-16px borderRadius-${modalCurveAmount}px position-relative eclistv">
-            <div class="ecmodal-header eclisth alignItems-center justifyContent-[space-between] width-100% borderBottom-[solid_#eee_1px] paddingBottom-8px marginBottom-8px">
+            <div class="ecmodal-header eclisth alignItems-center justifyContent-[space-between] width-100% borderBottom-[solid_${darkMode ? "#1f1f1f" : "#eee"}_1px] paddingBottom-8px marginBottom-8px">
                 <h3 class="margin-0">${title}</h3>
                 <a class="ecmodal-close close-button ecbounceanimation-5 width-24px height-24px alignItems-center justifyContent-center display-flex borderRadius-8px ${darkMode ? "backgroundColor-#1f1f1f hover:backgroundColor-#2f2f2f color-white" : "backgroundColor-#eee hover:backgroundColor-#ddd color-black"} cursor-pointer" style="user-select: none; -webkit-user-select: none; -ms-user-select: none;">&times;</a>
             </div>
