@@ -20,8 +20,8 @@ class ECModal {
         document.body.appendChild(this.modal);
         this.closeButton = this.modal.querySelector('.close-button');
         this.closeButton.addEventListener('click', () => this.hide());
-        let style = document.querySelector("style");
-        style.textContent += `
+        let style = document.createElement("style");
+        style.textContent = `
         @keyframes ecmodal-bounce {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
