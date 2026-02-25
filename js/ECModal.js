@@ -49,12 +49,12 @@ class ECModal {
     }
     show() {
         this.modal.style.display = 'flex';
-        this.modal.querySelector('.ecmodal-content').classList.remove("animationName-[ecmodal-fade]");
+        this.modal.querySelector('.ecmodal-content').classList.remove("animation-[ecmodal-fade_0.2s_ease_forwards]");
         this.modal.querySelector('.ecmodal-content').classList.add("animationName-[ecmodal-bounce]");
     }
     hide() {
         this.modal.querySelector('.ecmodal-content').classList.remove("animationName-[ecmodal-bounce]");
-        this.modal.querySelector('.ecmodal-content').classList.add("animationName-[ecmodal-fade]");
+        this.modal.querySelector('.ecmodal-content').classList.add("animation-[ecmodal-fade_0.2s_ease_forwards]");
         setTimeout(() => {
             this.modal.style.display = 'none';
         }, 200);
