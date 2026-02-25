@@ -1,5 +1,5 @@
 class ECModal {
-    constructor({title="", content="", buttonAmount=1} = {}) {
+    constructor({title="Modal", content="Content", buttonAmount=1} = {}) {
         this.modal = document.createElement("div");
         this.modal.classList.add("ecmodal", "position-absolute", "height-100%", "width-100%", "display-flex", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
         this.modal.innerHTML = `
@@ -22,7 +22,7 @@ class ECModal {
         this.closeButton.addEventListener('click', () => this.hide());
     }
     show() {
-        this.modal.style.display = 'block';
+        this.modal.style.display = 'flex';
     }
     hide() {
         this.modal.style.display = 'none';
