@@ -104,7 +104,6 @@ class ECStyleSheet {
         if (match[0].includes("ectable")){
             rules.push(`${selector} { border-collapse: collapse; width: 100%; }`);
             rules.push(`${selector} td, ${selector} th { border: 1px solid #eee; padding: 8px; text-align: center; }`);
-            rules.push(`${selector} tr:nth-child(even) { background-color: #f2f2f2; }`);
             return rules;
         }
         // HORIZONTAL LIST
