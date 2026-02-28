@@ -8,6 +8,7 @@ class ECStyleSheet {
         this.ecClasses = [
             /ecgrid-(\d+)x(\d+)/,
             /ecbounceanimation-(\d+)/,
+            /ectable/,
             /eclisthc-(\d+)/,
             /eclisthf-(\d+)/,
             /eclistho-(\d+)/,
@@ -97,6 +98,13 @@ class ECStyleSheet {
             rules.push(`${selector} { transition: 0.2s; }`);
             rules.push(`${selector}:hover { transform: scale(${1 + (Number(amount) / 100)}); }`);
             rules.push(`${selector}:active { transform: scale(${1 - (Number(amount) / 100)}); }`);
+            return rules;
+        }
+        // TABLE DESIGN
+        if (match[0].includes("ectable")){
+            rules.push(`${selector} { border-collapse: collapse; width: 100%; }`);
+            rules.push(`${selector} td, ${selector} th { border: 1px solid #ddd; padding: 8px; }`);
+            rules.push(`${selector} tr:nth-child(even) { background-color: #f2f2f2; }`);
             return rules;
         }
         // HORIZONTAL LIST
