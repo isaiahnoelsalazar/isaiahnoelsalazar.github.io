@@ -105,6 +105,7 @@ class ECStyleSheet {
         // TABLE DESIGN
         if (match[0].includes("ectable")){
             rules.push(`${selector} { border-collapse: collapse; width: 100%; }`);
+            let type = match[0].replace("ectable", "");
             if (type.includes("alternate")){
                 rules.push(`${selector} tr:nth-child(even) { background-color: #ddd; }`);
             }
