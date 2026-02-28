@@ -60,8 +60,41 @@
                 <div class="main-content dashboard padding-32px">
                     <h1>Home</h1>
                 </div>
-                <div class="main-content ecstylesheet-demo">
-                    <embed src="html/ecstylesheet-demo.html" type="text/html" width="100%" height="100%" style="border: none;">
+                <div class="main-content ecstylesheet-demo eclistv overflowX-hidden">
+                    <div class="padding-40px textAlign-center backgroundColor-#2c3e50 color-white transition-0.3s hover:backgroundColor-#34495e">
+                        <h1 class="margin-0">ECStyleSheet</h1>
+                        <p class="opacity-0.8">Utility-first CSS via JavaScript Engine</p>
+                    </div>
+                    <div class="padding-20px maxWidth-800px margin-auto gap-8px eclistvf-16">
+                        <div class="eclistv gap-8px padding-20px backgroundColor-white boxShadow-[0_4px_6px_rgba(0,0,0,0.1)]">
+                            <h2>1. Responsive Breakpoints</h2>
+                            <p>Resize your browser to see the box color change:</p>
+                            <div class="padding-20px textAlign-center color-white borderRadius-5px
+                                        mobile:backgroundColor-red 
+                                        tablet:backgroundColor-blue 
+                                        pc:backgroundColor-green">
+                                <span class="pc:display-none tablet:display-none">Mobile (Max 767px)</span>
+                                <span class="mobile:display-none pc:display-none">Tablet (768px - 1023px)</span>
+                                <span class="mobile:display-none tablet:display-none">PC (Min 1024px)</span>
+                            </div>
+                        </div>
+                        <div class="eclistv gap-8px padding-20px backgroundColor-white boxShadow-[0_4px_6px_rgba(0,0,0,0.1)]">
+                            <h2>2. Native Pseudo-classes</h2>
+                            <p>Hover over these elements:</p>
+                            <button class="padding-[10px_20px] border-none backgroundColor-#3498db color-white cursor-pointer borderRadius-4px
+                                        hover:backgroundColor-#2980b9 ecbounceanimation-2">
+                                Interactive Button
+                            </button>
+                        </div>
+                        <div id="dynamic-area" class="eclistv gap-8px padding-20px backgroundColor-white boxShadow-[0_4px_6px_rgba(0,0,0,0.1)]">
+                            <h2>3. Mutation Observer</h2>
+                            <p>Click the button below to inject a new element into the DOM. The engine will automatically style it.</p>
+                            <button onclick="addBox()">Add Styled Box</button>
+                            <div class="padding-15px backgroundColor-#e74c3c color-white borderRadius-10px textAlign-center">
+                                I am a static box. I should have margin, padding, background color, white text, rounded corners, and centered text.
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="main-content links eclistv overflowX-hidden">
                     <div class="eclistvc-8px padding-16px gap-4px width-100%">
@@ -100,6 +133,7 @@
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://openweb.fwh.is/ojt_attendance_index.php">OJT Attendance</a>
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/personal-webpage/">Personal Webpage | School Work</a>
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/pdf-to-doc/">PDF to DOC</a>
+                        <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/POS-Sample/">POS Sample</a>
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/qr-generator/">QR Generator</a>
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/rainbow/">Rainbow</a>
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://react-web-app-six.vercel.app/">React Web App</a>
@@ -114,9 +148,6 @@
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/website-observation-1/">Website Observation 1 | School Work</a>
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/women-with-baskets/">Women with Baskets | School Work</a>
                     </div>
-                </div>
-                <div class="main-content pos-system">
-                    <embed src="html/point-of-sale.html" type="text/html" width="100%" height="100%" style="border: none;">
                 </div>
                 <div class="main-content about padding-32px display-flex flexDirection-column gap-8px">
                     <h1>About</h1>

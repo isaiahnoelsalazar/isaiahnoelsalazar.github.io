@@ -83,3 +83,11 @@ function searchSidebar(){
         }
     });
 }
+
+function addBox() {
+    const container = document.getElementById('dynamic-area');
+    const newBox = document.createElement('div');
+    newBox.classList.add("padding-15px", "backgroundColor-#e74c3c", "color-white", "borderRadius-10px", "textAlign-center");
+    newBox.innerText = "I was injected and styled dynamically!";
+    container.appendChild(newBox);
+}
