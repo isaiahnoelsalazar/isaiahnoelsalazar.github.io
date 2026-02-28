@@ -4,7 +4,6 @@ const sidebarLinks = [
     {title: "Dashboard"},
     {title: "ECStyleSheet Demo", href: "#ecstylesheet-demo"},
     {title: "Links", href: "#links"},
-    {title: "POS System", href: "#pos-system"},
     {title: "About", href: "#about"},
 ];
 const hash = window.location.hash;
