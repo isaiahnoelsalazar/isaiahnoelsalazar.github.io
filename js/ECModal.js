@@ -47,6 +47,12 @@ class ECModal {
             button.addEventListener('click', callback);
         }
     }
+    removeButton(buttonIndex) {
+        const button = this.modal.querySelector(`.ecmodal-button${buttonIndex}`);
+        if (button) {
+            button.remove();
+        }
+    }
     show() {
         this.modal.style.display = 'flex';
         this.modal.querySelector('.ecmodal-content').style.animationName = "ecmodal-bounce";
