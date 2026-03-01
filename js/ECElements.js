@@ -61,6 +61,7 @@ class ECModal {
     }
     setContent(newContent) {
         const body = this.modal.querySelector('.ecmodal-body');
+        body.innerHTML = '';
         if (typeof newContent === "string") {
             body.innerHTML = `<p class="margin-0">${newContent}</p>`;
         } else {
