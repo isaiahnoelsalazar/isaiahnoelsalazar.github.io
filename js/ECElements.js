@@ -104,4 +104,7 @@ class ECToggle {
             this.toggle.addEventListener("click", click);
         }
     }
+    getToggleHTML(){
+        return this.toggle.outerHTML;
+    }
 }
