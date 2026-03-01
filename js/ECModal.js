@@ -48,10 +48,20 @@ class ECModal {
             button.addEventListener('click', callback);
         }
     }
-    addButton(label){
+    resetButtons({buttonAmount=1, buttonLabels=[]} = {}) {
+        this.removeButtons();
+        for (let a = 0; a < buttonAmount; a++) {
+            this.addButton(buttonLabels[a] || `Button ${a+1}`);
+        }
+    }
+    addButton({index, label} = {}) {
         const footer = this.modal.querySelector('.ecmodal-footer');
-        const buttonIndex = footer.children.length + 1;
+        const buttonIndex = index || footer.children.length + 1;
         footer.insertAdjacentHTML("beforeend", `<a class="ecmodal-button${buttonIndex} ecbounceanimation-5 padding-[12px_16px] ${this.darkMode ? "backgroundColor-#1f1f1f hover:backgroundColor-#2f2f2f color-white" : "backgroundColor-#1f1f1f hover:backgroundColor-#3f3f3f color-white"} cursor-pointer" style="user-select: none; -webkit-user-select: none; -ms-user-select: none;">${label || `Button ${buttonIndex}`}</a>`);
+    }
+    removeButtons() {
+        const footer = this.modal.querySelector('.ecmodal-footer');
+        footer.innerHTML = '';
     }
     removeButton(buttonIndex) {
         const button = this.modal.querySelector(`.ecmodal-button${buttonIndex}`);
