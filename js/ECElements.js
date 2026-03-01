@@ -1,5 +1,5 @@
 class ECModal {
-    constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="black", darkMode=false} = {}) {
+    constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="#0f0f0f", darkMode=false} = {}) {
         this.darkMode = darkMode;
         this.modal = document.createElement("div");
         this.modal.classList.add("ecmodal", "position-absolute", "height-100%", "width-100%", "display-none", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
@@ -7,7 +7,7 @@ class ECModal {
         <div class="ecmodal-content animationFillMode-forwards animationDuration-0.2s backgroundColor-[${backgroundColor}] color-[${color}] minWidth-300px padding-16px borderRadius-${modalCurveAmount}px position-relative eclistv">
             <div class="ecmodal-header eclisth alignItems-center justifyContent-[space-between] width-100% borderBottom-[solid_#eee_1px] paddingBottom-8px marginBottom-8px">
                 <h3 class="margin-0">${title}</h3>
-                <a class="ecmodal-close close-button ecbounceanimation-5 width-24px height-24px alignItems-center justifyContent-center display-flex borderRadius-8px backgroundColor-#eee hover:backgroundColor-#ddd color-black cursor-pointer" style="user-select: none; -webkit-user-select: none; -ms-user-select: none;">&times;</a>
+                <a class="ecmodal-close close-button ecbounceanimation-5 width-24px height-24px alignItems-center justifyContent-center display-flex borderRadius-8px backgroundColor-#eee hover:backgroundColor-#ddd color-#0f0f0f cursor-pointer" style="user-select: none; -webkit-user-select: none; -ms-user-select: none;">&times;</a>
             </div>
             <div class="ecmodal-body eclisth margin-[8px_0]">
                 <p class="margin-0">${content}</p>
