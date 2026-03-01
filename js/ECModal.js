@@ -51,7 +51,7 @@ class ECModal {
     resetButtons({buttonAmount=1, buttonLabels=[]} = {}) {
         this.removeButtons();
         for (let a = 0; a < buttonAmount; a++) {
-            this.addButton(buttonLabels[a] || `Button ${a+1}`);
+            this.addButton({label: buttonLabels[a]});
         }
     }
     addButton({index, label} = {}) {
