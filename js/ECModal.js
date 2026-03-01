@@ -1,5 +1,6 @@
 class ECModal {
     constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="black", darkMode=false} = {}) {
+        this.darkMode = darkMode;
         this.modal = document.createElement("div");
         this.modal.classList.add("ecmodal", "position-absolute", "height-100%", "width-100%", "display-none", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
         this.modal.innerHTML = `
@@ -50,7 +51,7 @@ class ECModal {
     addButton(label){
         const footer = this.modal.querySelector('.ecmodal-footer');
         const buttonIndex = footer.children.length + 1;
-        footer.insertAdjacentHTML("beforeend", `<a class="ecmodal-button${buttonIndex} ecbounceanimation-5 padding-[12px_16px] ${darkMode ? "backgroundColor-#1f1f1f hover:backgroundColor-#2f2f2f color-white" : "backgroundColor-#1f1f1f hover:backgroundColor-#3f3f3f color-white"} cursor-pointer" style="user-select: none; -webkit-user-select: none; -ms-user-select: none;">${label || `Button ${buttonIndex}`}</a>`);
+        footer.insertAdjacentHTML("beforeend", `<a class="ecmodal-button${buttonIndex} ecbounceanimation-5 padding-[12px_16px] ${this.darkMode ? "backgroundColor-#1f1f1f hover:backgroundColor-#2f2f2f color-white" : "backgroundColor-#1f1f1f hover:backgroundColor-#3f3f3f color-white"} cursor-pointer" style="user-select: none; -webkit-user-select: none; -ms-user-select: none;">${label || `Button ${buttonIndex}`}</a>`);
     }
     removeButton(buttonIndex) {
         const button = this.modal.querySelector(`.ecmodal-button${buttonIndex}`);
