@@ -136,6 +136,7 @@ class ECToggle {
             this.toggle.querySelector(".slider").setAttribute("onclick", click);
         }
         this.setToggleState(initialState);
+        return this.toggle;
     }
     setToggleState(state){
         this.toggle.querySelector("input").checked = state;
