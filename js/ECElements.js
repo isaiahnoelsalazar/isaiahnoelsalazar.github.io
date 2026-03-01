@@ -79,8 +79,8 @@ class ECModal {
         this.modal.querySelector('.close-button').classList.remove(`backgroundColor-#eee`, `hover:backgroundColor-#ddd`, `color-black`);
         const buttons = this.modal.querySelectorAll('.ecmodal-footer a');
         buttons.forEach(button => {
-            button.classList.add("backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white");
-            button.classList.remove(`backgroundColor-#1f1f1f`, `hover:backgroundColor-#2f2f2f`, `color-white`);
+            button.classList.remove("backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white");
+            button.classList.add(`backgroundColor-#1f1f1f`, `hover:backgroundColor-#2f2f2f`, `color-white`);
         });
     }
     disableDarkMode(){
@@ -91,8 +91,8 @@ class ECModal {
         this.modal.querySelector('.close-button').classList.add(`backgroundColor-#eee`, `hover:backgroundColor-#ddd`, `color-black`);
         const buttons = this.modal.querySelectorAll('.ecmodal-footer a');
         buttons.forEach(button => {
-            button.classList.remove("backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white");
-            button.classList.add(`backgroundColor-#1f1f1f`, `hover:backgroundColor-#2f2f2f`, `color-white`);
+            button.classList.add("backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white");
+            button.classList.remove(`backgroundColor-#1f1f1f`, `hover:backgroundColor-#2f2f2f`, `color-white`);
         });
     }
     show() {
@@ -126,7 +126,7 @@ class ECToggle {
             <span class="slider position-absolute top-0 left-0 right-0 bottom-0 backgroundColor-#ccc cursor-pointer transition-0.4s borderRadius-34px before:position-absolute before:transition-0.4s before:left-4px before:bottom-4px before:width-26px before:height-26px before:backgroundColor-white before:borderRadius-50% before:content-['']"></span>
         </label>`;
         if (click) {
-            this.toggle.setAttribute("onclick", click);
+            this.toggle.querySelector(".slider").setAttribute("onclick", click);
         }
     }
     add(){
