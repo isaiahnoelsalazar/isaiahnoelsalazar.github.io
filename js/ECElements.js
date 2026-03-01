@@ -73,14 +73,14 @@ class ECModal {
     }
     enableDarkMode(){
         this.darkMode = true;
-        this.modal.querySelector('.ecmodal-content').classList.add("backgroundColor-#0f0f0f", "color-white");
         this.modal.querySelector('.ecmodal-content').classList.remove(`backgroundColor-[${this.backgroundColor}]`, `color-[${this.color}]`);
-        this.modal.querySelector('.close-button').classList.add("backgroundColor-#1f1f1f", "hover:backgroundColor-#2f2f2f", "color-white");
+        this.modal.querySelector('.ecmodal-content').classList.add("backgroundColor-#0f0f0f", "color-white");
         this.modal.querySelector('.close-button').classList.remove(`backgroundColor-#eee`, `hover:backgroundColor-#ddd`, `color-black`);
+        this.modal.querySelector('.close-button').classList.add("backgroundColor-#1f1f1f", "hover:backgroundColor-#2f2f2f", "color-white");
         const buttons = this.modal.querySelectorAll('.ecmodal-footer a');
         buttons.forEach(button => {
-            button.classList.remove("backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white");
-            button.classList.add(`backgroundColor-#1f1f1f`, `hover:backgroundColor-#2f2f2f`, `color-white`);
+            button.classList.remove("hover:backgroundColor-#3f3f3f");
+            button.classList.add("hover:backgroundColor-#2f2f2f");
         });
     }
     disableDarkMode(){
@@ -91,8 +91,8 @@ class ECModal {
         this.modal.querySelector('.close-button').classList.add(`backgroundColor-#eee`, `hover:backgroundColor-#ddd`, `color-black`);
         const buttons = this.modal.querySelectorAll('.ecmodal-footer a');
         buttons.forEach(button => {
-            button.classList.add("backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white");
-            button.classList.remove(`backgroundColor-#1f1f1f`, `hover:backgroundColor-#2f2f2f`, `color-white`);
+            button.classList.remove("hover:backgroundColor-#2f2f2f");
+            button.classList.add("hover:backgroundColor-#3f3f3f");
         });
     }
     show() {
