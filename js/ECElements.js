@@ -1,6 +1,8 @@
 class ECModal {
     constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="black", darkMode=false} = {}) {
         this.darkMode = darkMode;
+        this.backgroundColor = backgroundColor;
+        this.color = color;
         this.modal = document.createElement("div");
         this.modal.classList.add("ecmodal", "position-absolute", "height-100%", "width-100%", "display-none", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
         this.modal.innerHTML = `
@@ -68,6 +70,30 @@ class ECModal {
         if (button) {
             button.remove();
         }
+    }
+    enableDarkMode(){
+        this.darkMode = true;
+        this.modal.querySelector('.ecmodal-content').classList.add("backgroundColor-#0f0f0f", "color-white");
+        this.modal.querySelector('.ecmodal-content').classList.remove(`backgroundColor-[${this.backgroundColor}]`, `color-[${this.color}]`);
+        this.modal.querySelector('.close-button').classList.add("backgroundColor-#1f1f1f", "hover:backgroundColor-#2f2f2f", "color-white");
+        this.modal.querySelector('.close-button').classList.remove(`backgroundColor-#eee`, `hover:backgroundColor-#ddd`, `color-black`);
+        const buttons = this.modal.querySelectorAll('.ecmodal-footer a');
+        buttons.forEach(button => {
+            button.classList.add("backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white");
+            button.classList.remove(`backgroundColor-#1f1f1f`, `hover:backgroundColor-#2f2f2f`, `color-white`);
+        });
+    }
+    disableDarkMode(){
+        this.darkMode = false;
+        this.modal.querySelector('.ecmodal-content').classList.remove("backgroundColor-#0f0f0f", "color-white");
+        this.modal.querySelector('.ecmodal-content').classList.add(`backgroundColor-[${this.backgroundColor}]`, `color-[${this.color}]`);
+        this.modal.querySelector('.close-button').classList.remove("backgroundColor-#1f1f1f", "hover:backgroundColor-#2f2f2f", "color-white");
+        this.modal.querySelector('.close-button').classList.add(`backgroundColor-#eee`, `hover:backgroundColor-#ddd`, `color-black`);
+        const buttons = this.modal.querySelectorAll('.ecmodal-footer a');
+        buttons.forEach(button => {
+            button.classList.remove("backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white");
+            button.classList.add(`backgroundColor-#1f1f1f`, `hover:backgroundColor-#2f2f2f`, `color-white`);
+        });
     }
     show() {
         this.modal.style.display = 'flex';
