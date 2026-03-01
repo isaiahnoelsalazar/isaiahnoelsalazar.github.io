@@ -111,7 +111,7 @@ class ECModal {
 }
 
 class ECToggle {
-    constructor({content="Content", click=null} = {}) {
+    constructor({content="Content", click=null, initialState=false} = {}) {
         this.toggle = document.createElement("div");
         this.toggle.classList.add("ectoggle", "eclisth", "justifyContent-[space-between]", "width-100%", "alignItems-center");
         this.toggle.innerHTML = `
@@ -131,6 +131,7 @@ class ECToggle {
         if (click) {
             this.toggle.querySelector(".slider").setAttribute("onclick", click);
         }
+        this.setToggleState(initialState);
     }
     setToggleState(state){
         this.toggle.querySelector("input").checked = state;
