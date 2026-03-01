@@ -92,11 +92,11 @@ class ECModal {
     }
     enableDarkMode(){
         this.darkMode = true;
-        this.modal.classList.add("ecmodal-dark");
+        this.modal.querySelector(".ecmodal-content").classList.add("ecmodal-dark");
     }
     disableDarkMode(){
         this.darkMode = false;
-        this.modal.classList.remove("ecmodal-dark");
+        this.modal.querySelector(".ecmodal-content").classList.remove("ecmodal-dark");
     }
     show() {
         this.modal.style.display = 'flex';
