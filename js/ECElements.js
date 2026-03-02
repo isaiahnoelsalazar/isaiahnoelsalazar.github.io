@@ -68,6 +68,14 @@ class ECModal {
             body.appendChild(newContent);
         }
     }
+    addContent(newContent) {
+        const body = this.modal.querySelector('.ecmodal-body');
+        if (typeof newContent === "string") {
+            body.innerHTML += `<p class="margin-0">${newContent}</p>`;
+        } else {
+            body.appendChild(newContent);
+        }
+    }
     setButtonAction(buttonIndex, callback) {
         const button = this.modal.querySelector(`.ecmodal-button${buttonIndex}`);
         if (button) {
