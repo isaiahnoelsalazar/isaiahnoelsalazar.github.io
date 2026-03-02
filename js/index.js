@@ -9,16 +9,16 @@ const sidebarLinks = [
 const hash = window.location.hash;
 
 sidebarLinks.forEach(element => {
-    const li = document.createElement("li");
+    const div = document.createElement("div");
     const a = document.createElement("a");
     if (element.href) {
         a.href = element.href;
     }
     a.textContent = element.title;
-    li.classList.add("borderBottomStyle-solid", "borderBottomColor-[var(--secondary-color)]", "borderBottomWidth-1px");
-    a.classList.add("borderRadius-4px", "color-white", "cursor-pointer", "margin-[4px_0]", "display-block", "padding-[12px_6px]", "textDecoration-none", "hover:backgroundColor-[var(--secondary-color)]");
-    li.appendChild(a);
-    document.getElementById("navigation-links").appendChild(li);
+    div.classList.add("eclisth", "borderBottom-[solid_var(--secondary-color)_1px]", "width-100%");
+    a.classList.add("width-100%", "borderRadius-4px", "color-white", "cursor-pointer", "margin-[4px_0]", "textDecoration-none", "display-block", "padding-[12px_6px]", "hover:backgroundColor-[var(--secondary-color)]");
+    div.appendChild(a);
+    document.getElementById("navigation-links").appendChild(div);
 });
 
 function toggleSidebar(){
@@ -71,14 +71,16 @@ function searchSidebar(){
         if (!element.title.toLowerCase().includes(document.getElementById("searchbar").value.toLowerCase()) && element.title.toLowerCase() != "dashboard"){
             return;
         } else {
-            const li = document.createElement("li");
+            const div = document.createElement("div");
             const a = document.createElement("a");
             if (element.href) {
                 a.href = element.href;
             }
             a.textContent = element.title;
-            li.appendChild(a);
-            tempSidebarLinks.appendChild(li);
+            div.classList.add("eclisth", "borderBottom-[solid_var(--secondary-color)_1px]", "width-100%");
+            a.classList.add("width-100%", "borderRadius-4px", "color-white", "cursor-pointer", "margin-[4px_0]", "textDecoration-none", "display-block", "padding-[12px_6px]", "hover:backgroundColor-[var(--secondary-color)]");
+            div.appendChild(a);
+            tempSidebarLinks.appendChild(div);
         }
     });
 }
