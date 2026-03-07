@@ -145,10 +145,10 @@ class ECToggle {
         const input = this.toggle.querySelector("input");
         slider.addEventListener("click", () => {
             input.checked = !input.checked;
-            if (click) {
-                click();
-            }
         });
+        if (click) {
+            this.toggle.querySelector(".slider").setAttribute("onclick", click);
+        }
         this.setToggleState(initialState);
         return this.toggle;
     }
