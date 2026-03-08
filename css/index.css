@@ -20,3 +20,6 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+p {
+    line-height: 2;
+}

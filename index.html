@@ -57,47 +57,7 @@
                 <div id="navigation-links" class="navigation-links overflowY-auto marginTop-16px"></div>
             </nav>
             <main class="background-[var(--background-color)] flex-1 height-100vh mobile:width-100%">
-                <div class="main-content dashboard padding-32px eclistv gap-8px">
-                    <h1>Home</h1>
-                    <p>Hello. Welcome to my website. I hope you enjoy your visit.</p>
-                </div>
-                <div class="main-content ecstylesheet-demo eclistv overflowX-hidden">
-                    <div class="padding-40px textAlign-center backgroundColor-#2c3e50 color-white transition-0.3s hover:backgroundColor-#34495e">
-                        <h1 class="margin-0">ECStyleSheet</h1>
-                        <p class="opacity-0.8">Utility-first CSS via JavaScript Engine</p>
-                    </div>
-                    <div class="padding-20px maxWidth-800px margin-auto gap-8px eclistvf-16">
-                        <div class="eclistv gap-8px padding-20px backgroundColor-white boxShadow-[0_4px_6px_rgba(0,0,0,0.1)]">
-                            <h2>1. Responsive Breakpoints</h2>
-                            <p>Resize your browser to see the box color change:</p>
-                            <div class="padding-20px textAlign-center color-white borderRadius-5px
-                                        mobile:backgroundColor-red 
-                                        tablet:backgroundColor-blue 
-                                        pc:backgroundColor-green">
-                                <span class="pc:display-none tablet:display-none">Mobile (Max 767px)</span>
-                                <span class="mobile:display-none pc:display-none">Tablet (768px - 1023px)</span>
-                                <span class="mobile:display-none tablet:display-none">PC (Min 1024px)</span>
-                            </div>
-                        </div>
-                        <div class="eclistv gap-8px padding-20px backgroundColor-white boxShadow-[0_4px_6px_rgba(0,0,0,0.1)]">
-                            <h2>2. Native Pseudo-classes</h2>
-                            <p>Hover over these elements:</p>
-                            <button class="padding-[10px_20px] border-none backgroundColor-#3498db color-white cursor-pointer borderRadius-4px
-                                        hover:backgroundColor-#2980b9 ecbounceanimation-2">
-                                Interactive Button
-                            </button>
-                        </div>
-                        <div id="dynamic-area" class="eclistv gap-8px padding-20px backgroundColor-white boxShadow-[0_4px_6px_rgba(0,0,0,0.1)]">
-                            <h2>3. Mutation Observer</h2>
-                            <p>Click the button below to inject a new element into the DOM. The engine will automatically style it.</p>
-                            <button onclick="addBox()">Add Styled Box</button>
-                            <div class="padding-15px backgroundColor-#e74c3c color-white borderRadius-10px textAlign-center">
-                                I am a static box. I should have margin, padding, background color, white text, rounded corners, and centered text.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="main-content links eclistv overflowX-hidden">
+                <div class="main-content home eclistv overflowX-hidden">
                     <div class="eclistvc-8px padding-16px gap-4px width-100%">
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/my-website/">My Website</a>
                     </div>
@@ -151,9 +111,121 @@
                         <a class="backgroundColor-white padding-16px hover:backgroundColor-#ddd textDecoration-none color-black" href="https://isaiahnoelsalazar.github.io/women-with-baskets/">Women with Baskets | School Work</a>
                     </div>
                 </div>
-                <div class="main-content about padding-32px eclistv gap-8px">
+                <div class="main-content about padding-32px eclistv gap-8px overflowX-hidden">
                     <h1>About</h1>
                     <p>This website serves as an amalgamation of a little bit of everything I know.</p>
+                </div>
+                <div class="main-content ecstylesheet padding-32px eclistv gap-8px overflowX-hidden">
+                    <h1>ECStyleSheet</h1>
+                    <p>ECStyleSheet is a lightweight JavaScript-powered styling engine that automatically generates CSS rules based on class names found in the DOM. Instead of writing traditional CSS files, developers can apply utility-style classes directly in HTML, and the script dynamically converts those classes into real CSS rules at runtime.</p>
+                    <p>The system scans the page for class names, interprets predefined patterns and property-value utilities, and injects the corresponding styles into a generated &lt;style&gt; tag. It also observes DOM changes, ensuring that newly added elements automatically receive the correct styles without requiring manual CSS updates.</p>
+                    <br>
+                    <h2>Key Features</h2>
+                    <h3 class="marginTop-16px">1. Dynamic CSS Generation</h3>
+                    <p>The script parses class names in the DOM and converts them into CSS rules on the fly. For example:</p>
+                    <div class="eclistv gap-8px">
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">color-red</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">backgroundColor-blue</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">margin-10px</p>
+                        </div>
+                    </div>
+                    <p>These are automatically transformed into valid CSS declarations and inserted into a stylesheet.</p>
+                    <h3 class="marginTop-16px">2. Responsive Breakpoints</h3>
+                    <p>Classes can include breakpoint prefixes to apply styles conditionally:</p>
+                    <div class="eclistv gap-8px">
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">mobile:</p>
+                            <p>&nbsp;→ applies styles up to <b>767px</b></p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">backgroundColor-blue</p>
+                            <p>&nbsp;→ applies styles between <b>768px-1023px</b></p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">margin-10px</p>
+                            <p>&nbsp;→ applies styles <b>1024px and above</b></p>
+                        </div>
+                    </div>
+                    <p>Example:</p>
+                    <div class="eclistv backgroundColor-#ddd padding-8px borderRadius-8px marginBottom-4px">
+                        <p class="fontFamily-monospace">mobile:fontSize-14px</p>
+                        <p class="fontFamily-monospace">pc:fontSize-18px</p>
+                    </div>
+                    <h3 class="marginTop-16px">3. Pseudo-Class Support</h3>
+                    <p>You can chain pseudo-classes in class names:</p>
+                    <div class="eclistv backgroundColor-#ddd padding-8px borderRadius-8px">
+                        <p class="fontFamily-monospace">hover:backgroundColor-blue</p>
+                        <p class="fontFamily-monospace">active:transform-scale(0.95)</p>
+                    </div>
+                    <p>These are translated into proper CSS selectors.</p>
+                    <h3 class="marginTop-16px">4. Built-in Component Utilities</h3>
+                    <p>The script includes several predefined UI utilities:</p>
+                    <h4>Grid System</h4>
+                    <div class="eclistv gap-8px">
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">ecgrid-3x2</p>
+                            <p>&nbsp;→ creates a 3-column &times; 2-row CSS grid.</p>
+                        </div>
+                    </div>
+                    <h4>Bounce Interaction Animation</h4>
+                    <div class="eclistv gap-8px">
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">ecbounceanimation-10</p>
+                            <p>&nbsp;→ scales elements slightly on hover and active states.</p>
+                        </div>
+                    </div>
+                    <h4>Table Styling</h4>
+                    <div class="eclistv gap-8px">
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">ectable</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">ectable-alternate</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">ectable-contrast</p>
+                        </div>
+                    </div>
+                    <h4>Horizontal Lists</h4>
+                    <div class="eclistv gap-8px">
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">eclisth</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">eclisthc-20</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">eclisthf-10</p>
+                        </div>
+                    </div>
+                    <h4>Vertical Lists</h4>
+                    <div class="eclistv gap-8px marginBottom-4px">
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">eclistv</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">eclistvc-20</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">eclistvf-10</p>
+                        </div>
+                    </div>
+                    <h3 class="marginTop-16px">5. Automatic DOM Monitoring</h3>
+                    <p>A MutationObserver watches for newly added elements. When new nodes appear, their classes are scanned and converted into CSS rules instantly, making it compatible with dynamically rendered content (e.g., SPA frameworks).</p>
+                    <h3 class="marginTop-16px">6. Performance Optimizations</h3>
+                    <p>Processed classes are stored in a cache (Set) to prevent duplicate CSS rule generation, improving performance.</p>
+                    <br>
+                    <h3>How it works</h3>
+                    <p>1. When the page loads, the script creates a &lt;style id="ec-styles"&gt; tag.</p>
+                    <p>2. It scans all DOM elements for class names.</p>
+                    <p>3. Each class is parsed to determine its corresponding properties.</p>
+                    <p>4. The corresponding CSS rule is generated and injected.</p>
+                    <p>5. A MutationObserver continues watching for future DOM changes.</p>
                 </div>
             </main>
         </div>

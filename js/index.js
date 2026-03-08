@@ -1,10 +1,9 @@
 const menuToggle = document.getElementById("menu-toggle");
 const sidebar = document.getElementById("sidebar");
 const sidebarLinks = [
-    {title: "Dashboard"},
-    {title: "ECStyleSheet Demo", href: "#ecstylesheet-demo"},
-    {title: "Links", href: "#links"},
+    {title: "Home"},
     {title: "About", href: "#about"},
+    {title: "ECStyleSheet", href: "#ecstylesheet"},
 ];
 const hash = window.location.hash;
 
@@ -31,7 +30,7 @@ function toggleSidebar(){
 }
 
 function showContent(target){
-    if (sidebarLinks[target].title.toLowerCase() == "dashboard"){
+    if (sidebarLinks[target].title.toLowerCase() == "home"){
         window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
     }
     const mainContents = document.getElementsByClassName("main-content");
