@@ -1,7 +1,13 @@
+let global_ECModalInstance = 0;
+let global_ECToggleInstance = 0;
+let global_ECCheckboxInstance = 0;
+let global_ECButtonInstance = 0;
+
 class ECModal {
     constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="#0f0f0f", darkMode=false} = {}) {
         this.darkMode = darkMode;
-        this.instance_number = document.querySelectorAll(".ecmodal").length;
+        this.instance_number = global_ECModalInstance;
+        global_ECModalInstance++;
         this.modal = document.createElement("div");
         this.modal.classList.add("ecmodal", `ecmodalinstance${this.instance_number}`, "position-absolute", "height-100%", "width-100%", "display-none", "backgroundColor-rgba(0,0,0,0.5)", "alignItems-center", "justifyContent-center");
         this.modal.innerHTML = `
@@ -127,15 +133,16 @@ class ECModal {
 }
 
 class ECToggle {
-    constructor({content="Content", click=null, initialState=false} = {}) {
-        this.instance_number = document.querySelectorAll(".ectoggle").length;
+    constructor({content="Content", click=null, isChecked=false} = {}) {
+        this.instance_number = global_ECToggleInstance;
+        global_ECToggleInstance++;
         if (this.instance_number == 0){
             let style = document.createElement("style");
             style.textContent = `
-            .ectoggle input:checked + .slider {
+            .ectoggle-input:checked + .ectoggle-slider {
                 background-color: green;
             }
-            .ectoggle input:checked + .slider:before {
+            .ectoggle-input:checked + .ectoggle-slider:before {
                 transform: translateX(26px);
             }`;
             document.body.appendChild(style);
@@ -156,7 +163,7 @@ class ECToggle {
         if (click) {
             this.toggle.querySelector(".ectoggle-slider").setAttribute("onclick", click);
         }
-        this.setToggleState(initialState);
+        this.setToggleState(isChecked);
     }
     build(){
         return this.toggle;
@@ -170,8 +177,9 @@ class ECToggle {
 }
 
 class ECCheckbox {
-    constructor({content="Content", click=null, initialState=false} = {}) {
-        this.instance_number = document.querySelectorAll(".eccheckbox").length;
+    constructor({content="Content", click=null, isChecked=false} = {}) {
+        this.instance_number = global_ECCheckboxInstance;
+        global_ECCheckboxInstance++;
         if (this.instance_number == 0){
             let style = document.createElement("style");
             style.textContent = `
@@ -198,7 +206,7 @@ class ECCheckbox {
                 margin-right: 6px;
             }
             .checkbox-wrapper-4 .cbx:hover {
-                background: rgba(0,119,255,0.06);
+                background: rgba(0,255,0,0.06);
             }
             .checkbox-wrapper-4 .cbx span {
                 float: left;
@@ -234,15 +242,15 @@ class ECCheckbox {
                 line-height: 18px;
             }
             .checkbox-wrapper-4 .cbx:hover span:first-child {
-                border-color: #07f;
+                border-color: green;
             }
             .checkbox-wrapper-4 .inp-cbx {
                 position: absolute;
                 visibility: hidden;
             }
             .checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {
-                background: #07f;
-                border-color: #07f;
+                background: green;
+                border-color: green;
                 animation: wave-4 0.4s ease;
             }
             .checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child svg {
@@ -287,11 +295,11 @@ class ECCheckbox {
         this.checkbox.classList.add("eccheckbox", "eclisth", "justifyContent-[space-between]", "width-100%", "alignItems-center");
         this.checkbox.innerHTML = `
         <div class="checkbox-wrapper-4">
-            <input class="inp-cbx" id="morning" type="checkbox"/>
-            <label class="cbx" for="morning"><span>
+            <input class="inp-cbx" id="eccheckboxcontent-${this.instance_number}" type="checkbox"/>
+            <label class="cbx" for="eccheckboxcontent-${this.instance_number}"><span>
             <svg width="12px" height="10px">
                 <use xlink:href="#check-4"></use>
-            </svg></span><span>Morning</span></label>
+            </svg></span><span>${content}</span></label>
             <svg class="inline-svg">
                 <symbol id="check-4" viewbox="0 0 12 10">
                 <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
@@ -299,17 +307,35 @@ class ECCheckbox {
             </svg>
         </div>`;
         if (click) {
-            this.checkbox.querySelector(".switch").setAttribute("onclick", click);
+            this.checkbox.querySelector(".checkbox-wrapper-4").setAttribute("onclick", click);
         }
-        this.setToggleState(initialState);
+        this.setCheckedState(isChecked);
     }
     build(){
         return this.checkbox;
     }
-    setToggleState(state){
-        this.checkbox.querySelector("input").checked = state;
+    setCheckedState(state){
+        this.checkbox.querySelector(".inp-cbx").checked = state;
     }
-    getToggleState(){
-        return this.checkbox.querySelector("input").checked;
+    getCheckedState(){
+        return this.checkbox.querySelector(".inp-cbx").checked;
+    }
+}
+
+class ECButton {
+    constructor({content="Content", click=null, bounceOffset=5, curveAmount=8} = {}) {
+        this.instance_number = global_ECButtonInstance;
+        global_ECButtonInstance++;
+        this.button = document.createElement("a");
+        this.button.classList.add("ecbutton", `ecbuttoninstance${this.instance_number}`, "display-[inline-block]", `borderRadius-${curveAmount}px`, `ecbounceanimation-${bounceOffset}`, "padding-[12px_16px]", "backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white", "cursor-pointer");
+        this.button.setAttribute("style", "user-select: none; -webkit-user-select: none; -ms-user-select: none;");
+        this.button.innerHTML = `
+        ${content}`;
+        if (click) {
+            this.button.setAttribute("onclick", click);
+        }
+    }
+    build(){
+        return this.button;
     }
 }
