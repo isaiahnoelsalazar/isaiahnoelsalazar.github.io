@@ -11,7 +11,7 @@ class EasyHTTPRequest {
             if (this.request.readyState === 4 && this.request.status === 200){
                 if (run){
                     if (userFunction){
-                        userFunction();
+                        userFunction(this.request.responseText);
                     }
                     run = false;
                 }
