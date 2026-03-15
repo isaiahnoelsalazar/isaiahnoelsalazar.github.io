@@ -139,6 +139,9 @@ class ECToggle {
         if (this.instance_number == 0){
             let style = document.createElement("style");
             style.textContent = `
+            .ectoggle:hover {
+                background-color: rgba(0,255,0,0.06);
+            }
             .ectoggle-input:checked + .ectoggle-slider {
                 background-color: green;
             }
@@ -148,7 +151,7 @@ class ECToggle {
             document.body.appendChild(style);
         }
         this.toggle = document.createElement("div");
-        this.toggle.classList.add("ectoggle", "eclisth", "hover:backgroundColor-[rgba(0,255,0,0.06)]", "borderRadius-6px", "justifyContent-[space-between]", "width-100%", "alignItems-center");
+        this.toggle.classList.add("ectoggle", "eclisth", "borderRadius-6px", "justifyContent-[space-between]", "width-100%", "alignItems-center");
         this.toggle.innerHTML = `
         <p class="marginLeft-8px">${content}</p>
         <div class="switch position-relative display-inline-block width-60px height-34px marginRight-8px">
