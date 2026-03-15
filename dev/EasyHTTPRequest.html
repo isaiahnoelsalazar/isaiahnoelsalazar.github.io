@@ -9,6 +9,12 @@
         <script src="../js/EasyHTTPRequest.js"></script>
     </head>
     <body class="margin-0">
+        <form action="https://openweb.fwh.is/dev/ehr-test.php" method="POST" target="hiddenFrame">
+            <input type="text" name="name" value="test">
+            <input type="text" name="score" value="100">
+            <button type="submit">Send</button>
+        </form>
+        <iframe name="hiddenFrame" style="display:none;"></iframe>
     </body>
     <script src="ehr.js"></script>
 </html>
