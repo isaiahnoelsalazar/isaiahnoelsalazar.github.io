@@ -4,9 +4,19 @@ class EasyHTTPRequest {
         this.method = method;
         this.request = new XMLHttpRequest();
     }
-    execute (userFunction){
+    execute ({userFunction=null, formData=null} = {}){
+        let run = true;
         this.request.open(this.method, this.url, true);
-        this.request.onreadystatechange = userFunction;
-        this.request.send();
+        this.request.onreadystatechange = () => {
+            if (this.request.readyState === 4 && this.request.status === 200){
+                if (run){
+                    if (userFunction){
+                        userFunction();
+                    }
+                    run = false;
+                }
+            }
+        };
+        this.request.send(formData || null);
     }
 }
