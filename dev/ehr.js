@@ -1,24 +1,6 @@
-new EasyHTTPRequest("https://openweb.fwh.is/dev/api-proxy.php", "GET").execute({
-    userFunction: () => {
+new EasyHTTPRequest("https://isaiahnoelsalazar.pythonanywhere.com/", "GET").execute({
+    userFunction: (response) => {
         console.log("Request successful!");
+        console.log(response);
     }
 });
-
-fetch("https://openweb.fwh.is/dev/api-proxy.php")
-.then(response => response.text())
-.then(data => {
-    console.log(data);
-})
-.catch(error => {
-    console.error("Request failed:", error);
-});
-
-fetch("https://openweb.fwh.is/dev/api-proxy.php", {
-    method: "POST",
-    body: new FormData()
-})
-.then(response => response.text())
-.then(data => {
-    console.log(data);
-})
-.catch(error => console.error(error));
