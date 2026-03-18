@@ -2,6 +2,7 @@ let global_ECModalInstance = 0;
 let global_ECToggleInstance = 0;
 let global_ECCheckboxInstance = 0;
 let global_ECButtonInstance = 0;
+let global_ECRadioInstance = 0;
 
 class ECModal {
     constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="#0f0f0f", darkMode=false} = {}) {
@@ -340,5 +341,71 @@ class ECButton {
     }
     build(){
         return this.button;
+    }
+}
+
+class ECRadio {
+    constructor({identifier=`ecradio${global_ECRadioInstance}`, content=[]} = {}){
+        this.instance_number = global_ECRadioInstance;
+        global_ECRadioInstance++;
+        if (this.instance_number == 0){
+            let style = document.createElement("style");
+            style.textContent = `
+            .ecradio{
+              display:flex;
+              gap:12px;
+              flex-wrap:wrap;
+            }
+            .ecradio input{
+              display:none;
+            }
+            .ecradio-label{
+              padding:10px 18px;
+              border-radius:10px;
+              border:2px solid #e3e6ef;
+              background:white;
+              cursor:pointer;
+              font-weight:500;
+              transition:all .2s ease;
+            }
+            .ecradio-label:hover{
+              border-color:#6b7cff;
+              color:#3b4dff;
+            }
+            .ecradio input:checked + .ecradio-label{
+              background:#4f5dff;
+              border-color:#4f5dff;
+              color:white;
+              box-shadow:0 4px 12px rgba(79,93,255,0.35);
+            }`;
+            document.body.appendChild(style);
+        }
+        this.group = document.createElement("div");
+        this.group.classList.add("ecradio", "marginBottom-16px");
+        for (let a = 0; a < content.length; a++){
+            let radio = document.createElement("input");
+            radio.type = "radio";
+            radio.id = `${identifier}${a}`;
+            radio.name = identifier;
+            radio.value = content[a];
+            let label = document.createElement("label");
+            label.classList.add("ecradio-label");
+            label.setAttribute("for", `${identifier}${a}`);
+            label.textContent = content[a];
+            this.group.appendChild(radio);
+            this.group.appendChild(label);
+        }
+    }
+    build(){
+        return this.group;
+    }
+    getSelectedValue(){
+        const radios = this.group.querySelectorAll("input[type='radio']");
+        for (const radio of radios){
+            if (radio.checked){
+                return radio.value;
+            }
+        }
+        return null;
     }
 }
