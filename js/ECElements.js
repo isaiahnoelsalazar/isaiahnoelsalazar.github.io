@@ -5,7 +5,17 @@ let global_ECButtonInstance = 0;
 let global_ECRadioInstance = 0;
 
 class ECModal {
-    constructor({title="Modal", content="Content", buttonAmount=1, buttonLabels=[], modalCurveAmount=12, modalButtonsCurveAmount=8, backgroundColor="white", color="#0f0f0f", darkMode=false} = {}) {
+    constructor({
+            title="Modal",
+            content="Content",
+            buttonAmount=1,
+            buttonLabels=[],
+            modalCurveAmount=12,
+            modalButtonsCurveAmount=8,
+            backgroundColor="white",
+            color="#0f0f0f",
+            darkMode=false
+        } = {}) {
         this.darkMode = darkMode;
         this.instance_number = global_ECModalInstance;
         global_ECModalInstance++;
@@ -134,7 +144,11 @@ class ECModal {
 }
 
 class ECToggle {
-    constructor({content="Content", click=null, isChecked=false} = {}) {
+    constructor({
+            content="Content",
+            click=null,
+            isChecked=false
+        } = {}) {
         this.instance_number = global_ECToggleInstance;
         global_ECToggleInstance++;
         if (this.instance_number == 0){
@@ -181,7 +195,11 @@ class ECToggle {
 }
 
 class ECCheckbox {
-    constructor({content="Content", click=null, isChecked=false} = {}) {
+    constructor({
+            content="Content",
+            click=null,
+            isChecked=false
+        } = {}) {
         this.instance_number = global_ECCheckboxInstance;
         global_ECCheckboxInstance++;
         if (this.instance_number == 0){
@@ -327,11 +345,16 @@ class ECCheckbox {
 }
 
 class ECButton {
-    constructor({content="Content", click=null, bounceOffset=5, curveAmount=8} = {}) {
+    constructor({
+            content="Content",
+            click=null,
+            bounceOffset=5,
+            curveAmount=8
+        } = {}) {
         this.instance_number = global_ECButtonInstance;
         global_ECButtonInstance++;
         this.button = document.createElement("a");
-        this.button.classList.add("ecbutton", `ecbuttoninstance${this.instance_number}`, "display-[inline-block]", `borderRadius-${curveAmount}px`, `ecbounceanimation-${bounceOffset}`, "padding-[12px_16px]", "backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white", "cursor-pointer");
+        this.button.classList.add("ecbutton", `ecbuttoninstance${this.instance_number}`, "display-[inline-block]", `borderRadius-${curveAmount}px`, "border-[solid_2px_#1f1f1f]", "hover:border-[solid_2px_#3f3f3f]", `ecbounceanimation-${bounceOffset}`, "padding-[12px_16px]", "backgroundColor-#1f1f1f", "hover:backgroundColor-#3f3f3f", "color-white", "cursor-pointer");
         this.button.setAttribute("style", "user-select: none; -webkit-user-select: none; -ms-user-select: none;");
         this.button.innerHTML = `
         ${content}`;
@@ -345,7 +368,16 @@ class ECButton {
 }
 
 class ECRadio {
-    constructor({identifier=`ecradio${global_ECRadioInstance}`, content=[]} = {}){
+    constructor({
+            identifier=`ecradio${global_ECRadioInstance}`,
+            content=[],
+            initialCheckedIndex=-1,
+            gap=8,
+            color="green",
+            xPadding=16,
+            yPadding=12,
+            curveAmount=8
+        } = {}){
         this.instance_number = global_ECRadioInstance;
         global_ECRadioInstance++;
         if (this.instance_number == 0){
@@ -353,30 +385,30 @@ class ECRadio {
             style.textContent = `
             .ecradio{
               display:flex;
-              gap:12px;
+              gap:${gap}px;
               flex-wrap:wrap;
             }
             .ecradio input{
               display:none;
             }
             .ecradio-label{
-              padding:10px 18px;
-              border-radius:10px;
-              border:2px solid #e3e6ef;
+              padding:${yPadding}px ${xPadding}px;
+              border-radius:${curveAmount}px;
+              border:2px solid #00000020;
               background:white;
               cursor:pointer;
               font-weight:500;
               transition:all .2s ease;
             }
             .ecradio-label:hover{
-              border-color:#6b7cff;
-              color:#3b4dff;
+              border-color: ${color};
+              color: ${color};
             }
             .ecradio input:checked + .ecradio-label{
-              background:#4f5dff;
-              border-color:#4f5dff;
+              background: ${color};
+              border-color: ${color};
               color:white;
-              box-shadow:0 4px 12px rgba(79,93,255,0.35);
+              /*box-shadow:0 4px 12px rgba(0,255,0,0.35);*/
             }`;
             document.body.appendChild(style);
         }
@@ -395,9 +427,18 @@ class ECRadio {
             this.group.appendChild(radio);
             this.group.appendChild(label);
         }
+        if (initialCheckedIndex >= 0 && initialCheckedIndex < content.length){
+            this.setChecked(initialCheckedIndex);
+        }
     }
     build(){
         return this.group;
+    }
+    setChecked(index){
+        const radios = this.group.querySelectorAll("input[type='radio']");
+        if (index >= 0 && index < radios.length){
+            radios[index].checked = true;
+        }
     }
     getSelectedValue(){
         const radios = this.group.querySelectorAll("input[type='radio']");
