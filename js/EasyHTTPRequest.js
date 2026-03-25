@@ -8,10 +8,14 @@ class EasyHTTPRequest {
         let run = true;
         this.request.open(this.method, this.url, true);
         this.request.onreadystatechange = () => {
-            if (this.request.readyState === 4 && this.request.status === 200){
+            if (this.request.readyState === 4){
                 if (run){
-                    if (userFunction){
-                        userFunction(this.request.responseText);
+                    if (this.request.status === 200){
+                        if (userFunction){
+                            userFunction(this.request.responseText);
+                        }
+                    } else {
+                        console.error(`Request failed with status ${this.request.status}`);
                     }
                     run = false;
                 }
