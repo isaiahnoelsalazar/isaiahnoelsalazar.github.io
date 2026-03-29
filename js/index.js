@@ -4,6 +4,7 @@ const sidebarLinks = [
     {title: "Home"},
     {title: "About", href: "#about"},
     {title: "ECStyleSheet", href: "#ecstylesheet"},
+    {title: "ECElements", href: "#ecelements"},
 ];
 const hash = window.location.hash;
 

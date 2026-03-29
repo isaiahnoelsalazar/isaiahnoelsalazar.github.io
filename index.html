@@ -235,6 +235,124 @@
                     <p>4. The corresponding CSS rule is generated and injected.</p>
                     <p>5. A MutationObserver continues watching for future DOM changes.</p>
                 </div>
+                <div class="main-content ecelements padding-32px eclistv gap-8px overflowX-hidden">
+                    <h1>ECElements</h1>
+                    <p>This script provides a set of lightweight, JavaScript-powered UI components that integrate seamlessly with ECStyleSheet. Instead of manually writing CSS and HTML structures, developers can instantiate components directly in JavaScript and inject them into the DOM.</p>
+                    <p>Each component is self-contained, dynamically styled, and automatically injects required CSS rules when first used. This makes the system ideal for rapid UI development and dynamic applications.</p>
+
+                    <br>
+                    <h2>Available Components</h2>
+
+                    <h3 class="marginTop-16px">1. ECModal</h3>
+                    <p>A customizable modal dialog with dynamic content and buttons.</p>
+
+                    <div class="eclistv gap-8px">
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">title</p>
+                            <p>&nbsp;→ sets modal title</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">content</p>
+                            <p>&nbsp;→ modal body content</p>
+                        </div>
+                        <div class="eclisth alignItems-center">
+                            <p class="backgroundColor-#ddd padding-8px borderRadius-8px fontFamily-monospace">buttonAmount</p>
+                            <p>&nbsp;→ number of buttons</p>
+                        </div>
+                    </div>
+
+                    <p>Example:</p>
+                    <div class="eclistv backgroundColor-#ddd padding-8px borderRadius-8px">
+                        <p class="fontFamily-monospace">const modal = new ECModal({ title: "Hello", content: "World" });</p>
+                        <p class="fontFamily-monospace">modal.show();</p>
+                    </div>
+
+                    <h3 class="marginTop-16px">2. ECToggle</h3>
+                    <p>A switch toggle component with built-in animation and state control.</p>
+
+                    <div class="eclistv backgroundColor-#ddd padding-8px borderRadius-8px">
+                        <p class="fontFamily-monospace">const toggle = new ECToggle({ content: "Enable feature" });</p>
+                        <p class="fontFamily-monospace">document.body.appendChild(toggle.build());</p>
+                    </div>
+
+                    <p>Methods:</p>
+                    <div class="eclistv gap-8px">
+                        <p class="fontFamily-monospace">setToggleState(true/false)</p>
+                        <p class="fontFamily-monospace">getToggleState()</p>
+                    </div>
+
+                    <h3 class="marginTop-16px">3. ECCheckbox</h3>
+                    <p>A styled checkbox with smooth animations and label support.</p>
+
+                    <div class="eclistv backgroundColor-#ddd padding-8px borderRadius-8px">
+                        <p class="fontFamily-monospace">const checkbox = new ECCheckbox({ content: "Accept terms" });</p>
+                        <p class="fontFamily-monospace">document.body.appendChild(checkbox.build());</p>
+                    </div>
+
+                    <p>Methods:</p>
+                    <div class="eclistv gap-8px">
+                        <p class="fontFamily-monospace">setCheckedState(true/false)</p>
+                        <p class="fontFamily-monospace">getCheckedState()</p>
+                    </div>
+
+                    <h3 class="marginTop-16px">4. ECButton</h3>
+                    <p>A reusable button with bounce animation and customizable styling.</p>
+
+                    <div class="eclistv backgroundColor-#ddd padding-8px borderRadius-8px">
+                        <p class="fontFamily-monospace">const btn = new ECButton({ content: "Click me" });</p>
+                        <p class="fontFamily-monospace">document.body.appendChild(btn.build());</p>
+                    </div>
+
+                    <p>Supports:</p>
+                    <div class="eclistv gap-8px">
+                        <p class="fontFamily-monospace">bounceOffset</p>
+                        <p class="fontFamily-monospace">curveAmount</p>
+                    </div>
+
+                    <h3 class="marginTop-16px">5. ECRadio</h3>
+                    <p>A flexible radio button group with customizable layout and colors.</p>
+
+                    <div class="eclistv backgroundColor-#ddd padding-8px borderRadius-8px">
+                        <p class="fontFamily-monospace">const radio = new ECRadio({ content: ["A", "B", "C"] });</p>
+                        <p class="fontFamily-monospace">document.body.appendChild(radio.build());</p>
+                    </div>
+
+                    <p>Methods:</p>
+                    <div class="eclistv gap-8px">
+                        <p class="fontFamily-monospace">setChecked(index)</p>
+                        <p class="fontFamily-monospace">getSelectedValue()</p>
+                    </div>
+
+                    <br>
+                    <h2>Key Features</h2>
+
+                    <h3 class="marginTop-16px">Dynamic Style Injection</h3>
+                    <p>Each component injects its required CSS only once, ensuring minimal overhead and avoiding duplicate styles.</p>
+
+                    <h3 class="marginTop-16px">Instance-Based Architecture</h3>
+                    <p>Global counters ensure each component instance is uniquely identifiable, preventing conflicts in dynamic applications.</p>
+
+                    <h3 class="marginTop-16px">Built-in Animations</h3>
+                    <p>Components include subtle animations such as bounce effects, hover states, and transitions for better UX.</p>
+
+                    <h3 class="marginTop-16px">Dark Mode Support (Modal)</h3>
+                    <p>ECModal includes built-in dark mode styling that can be toggled programmatically.</p>
+
+                    <div class="eclistv backgroundColor-#ddd padding-8px borderRadius-8px">
+                        <p class="fontFamily-monospace">modal.enableDarkMode();</p>
+                    </div>
+
+                    <h3 class="marginTop-16px">Reusable & Composable</h3>
+                    <p>All components return DOM elements via <b>build()</b>, making them easy to insert anywhere in your application.</p>
+
+                    <br>
+                    <h3>How it works</h3>
+                    <p>1. A component instance is created using its class constructor.</p>
+                    <p>2. Required HTML structure is generated dynamically.</p>
+                    <p>3. Styles are injected once per component type.</p>
+                    <p>4. The component is appended to the DOM using <b>build()</b>.</p>
+                    <p>5. Methods allow runtime interaction and updates.</p>
+                </div>
             </main>
         </div>
     </body>
